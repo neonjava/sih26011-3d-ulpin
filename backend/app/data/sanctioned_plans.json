@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "title": "Municipal Building Sanction Plans & Permissible Envelope Registry",
+    "version": "2026.1",
+    "last_updated": "2026-08-26T23:37:55+05:30"
+  },
+  "sanctions": [
+    {
+      "plan_id": "SANCT-MUM-2021-0489",
+      "complex_id": "MUM-SVR-001",
+      "complex_name": "Sagar View Towers",
+      "city": "Mumbai",
+      "municipal_authority": "Municipal Corporation of Greater Mumbai (MCGM) - Building Proposal Department (Western Suburbs)",
+      "approval_number": "CE/4502/WS/AH dated 14/11/2021",
+      "commencement_certificate_no": "CC/2021/WS/3902",
+      "land_2d_ulpin": "MH27-045-8912345",
+      "cts_no": "1245/8",
+      "sanctioned_parameters": {
+        "permissible_fsi": 2.5,
+        "sanctioned_built_up_area_sqm": 6125.0,
+        "max_permissible_floors": 12,
+        "floor_configuration": "Ground Stilt + 12 Residential Upper Floors",
+        "max_sanctioned_height_meters": 42.0,
+        "stilt_parking_height_meters": 3.5,
+        "typical_floor_height_meters": 3.0,
+        "basement_permitted": false,
+        "setbacks_meters": {
+          "front_road_setback": 6.0,
+          "rear_setback": 4.5,
+          "side_setback_1": 4.5,
+          "side_setback_2": 4.5
+        }
+      },
+      "compliance_audit": {
+        "actual_constructed_floors": 14,
+        "actual_height_meters": 49.0,
+        "actual_consumed_built_up_sqm": 7088.0,
+        "fsi_consumed": 2.89,
+        "unauthorized_excess_sqm": 963.0,
+        "violation_severity": "ILLEGAL_PHANTOM_FLOORS",
+        "phantom_floors": [
+          13,
+          14
+        ],
+        "action_status": "STOP_WORK_AND_DEMOLITION_NOTICE_UNDER_MRTP_SEC_53"
+      }
+    },
+    {
+      "plan_id": "SANCT-BLR-2022-1102",
+      "complex_id": "BLR-TCR-002",
+      "complex_name": "TechCorp Residency",
+      "city": "Bengaluru",
+      "municipal_authority": "Bruhat Bengaluru Mahanagara Palike (BBMP) - Town Planning Department",
+      "approval_number": "BBMP/ADDL.DIR/JDTP/LP-891-2/2022-23",
+      "commencement_certificate_no": "BBMP/CC/2022/8814",
+      "land_2d_ulpin": "KA02-108-4421908",
+      "bbmp_khata_no": "891/2",
+      "sanctioned_parameters": {
+        "permissible_far": 3.25,
+        "sanctioned_built_up_area_sqm": 22100.0,
+        "max_permissible_floors": 20,
+        "floor_configuration": "2 Basements (B2, B1) + Ground Retail + 1st Floor Commercial + Floors 2 to 20 Residential + Rooftop Solar",
+        "max_sanctioned_height_meters": 68.0,
+        "max_basement_depth_meters": -7.5,
+        "setbacks_meters": {
+          "front_road_setback": 12.0,
+          "rear_setback": 8.0,
+          "side_setback_1": 8.0,
+          "side_setback_2": 8.0
+        }
+      },
+      "compliance_audit": {
+        "actual_constructed_floors": 20,
+        "actual_height_meters": 68.0,
+        "actual_consumed_built_up_sqm": 21850.0,
+        "far_consumed": 3.21,
+        "unauthorized_excess_sqm": 0.0,
+        "violation_severity": "NONE_COMPLIANT",
+        "phantom_floors": [],
+        "action_status": "OCCUPANCY_CERTIFICATE_ISSUED"
+      }
+    },
+    {
+      "plan_id": "SANCT-DEL-2020-0671",
+      "complex_id": "DEL-DWK-003",
+      "complex_name": "Surya Kiran Apartments",
+      "city": "New Delhi",
+      "municipal_authority": "Delhi Development Authority (DDA) - Building Section",
+      "approval_number": "DDA/Bldg/Dwarka-Sec12/P44/2020/671",
+      "commencement_certificate_no": "DDA/CC/2020/419",
+      "land_2d_ulpin": "DL08-301-7719234",
+      "dda_plot_no": "Plot No. 44, Pocket 6, Sector 12 Dwarka",
+      "sanctioned_parameters": {
+        "permissible_far": 2.0,
+        "sanctioned_built_up_area_sqm": 7000.0,
+        "max_permissible_floors": 10,
+        "floor_configuration": "Ground + 10 Residential Floors",
+        "max_sanctioned_height_meters": 35.0,
+        "basement_permitted": false,
+        "subsurface_condition": "DMRC Blue Line underground tunnel alignment in South sector. No excavation or foundation piles allowed below -6.00m MSL in South 22m corridor.",
+        "setbacks_meters": {
+          "front_road_setback": 9.0,
+          "rear_setback": 6.0,
+          "side_setback_1": 5.0,
+          "side_setback_2": 5.0
+        }
+      },
+      "compliance_audit": {
+        "actual_constructed_floors": 10,
+        "actual_height_meters": 33.0,
+        "actual_consumed_built_up_sqm": 6850.0,
+        "far_consumed": 1.95,
+        "unauthorized_excess_sqm": 0.0,
+        "violation_severity": "NONE_COMPLIANT",
+        "phantom_floors": [],
+        "action_status": "OCCUPANCY_CERTIFICATE_ISSUED_WITH_DMRC_NOC"
+      }
+    }
+  ]
+}

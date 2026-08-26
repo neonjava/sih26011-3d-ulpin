@@ -1,0 +1,215 @@
+{
+  "metadata": {
+    "registry": "Central Registry of Securitisation Asset Reconstruction and Security Interest of India (CERSAI)",
+    "system_module": "3D-ULPIN Real-Time Asset Encumbrance & Mortgage Validation Engine",
+    "last_synced": "2026-08-26T23:37:55+05:30",
+    "total_records": 5
+  },
+  "security_interests": [
+    {
+      "cersai_security_interest_id": "CERSAI-SBI-2024-88912",
+      "asset_category": "Immovable Property - Residential Flat",
+      "target_3d_ulpin": "MH27-045-8912345-WIGA-FL04-U402",
+      "base_land_2d_ulpin": "MH27-045-8912345",
+      "cadastral_reference": "Flat No. 402, 4th Floor, Wing A, Sagar View Towers, CTS No. 1245/8, Bandra West, Mumbai 400050",
+      "floor_elevation_envelope": {
+        "z_min_m": 13.5,
+        "z_max_m": 16.5
+      },
+      "lender_details": {
+        "financial_institution": "State Bank of India",
+        "branch_code": "00481",
+        "branch_name": "Bandra West SME Branch, Mumbai",
+        "ifsc_code": "SBIN0000481"
+      },
+      "loan_account_no": "SBI-HL-39811029481",
+      "loan_type": "Individual Housing Term Loan",
+      "borrower_details": {
+        "primary_borrower": "Rajesh Kumar Sharma",
+        "co_borrower": "Priya R. Sharma",
+        "masked_pan": "ABCPS****K",
+        "ckyc_identifier_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "financial_terms": {
+        "sanctioned_limit_inr": 17500000.0,
+        "current_outstanding_inr": 16240000.0,
+        "rate_of_interest_pct": 8.5,
+        "tenure_months": 240,
+        "equated_monthly_installment_inr": 151874.0
+      },
+      "mortgage_creation": {
+        "type_of_mortgage": "Equitable Mortgage by Deposit of Title Deeds",
+        "date_of_creation": "2024-03-18",
+        "date_of_cersai_filing": "2024-03-20",
+        "original_deed_number": "BDR-3/12458/2024",
+        "sro_registration_office": "SRO Bandra-3 (Andheri Taluka)"
+      },
+      "charge_status": "ACTIVE_REGISTERED_MORTGAGE"
+    },
+    {
+      "cersai_security_interest_id": "FLAGGED-HDFC-APP-2024-99104",
+      "asset_category": "Immovable Property - Residential Flat (FRAUD ATTEMPT)",
+      "target_3d_ulpin": "MH27-045-8912345-WIGA-FL04-U402",
+      "base_land_2d_ulpin": "MH27-045-8912345",
+      "cadastral_reference": "Flat No. 402, 4th Floor, Wing A, Sagar View Towers, CTS No. 1245/8, Bandra West, Mumbai 400050",
+      "floor_elevation_envelope": {
+        "z_min_m": 13.5,
+        "z_max_m": 16.5
+      },
+      "lender_details": {
+        "financial_institution": "HDFC Bank Ltd",
+        "branch_code": "HDFC000124",
+        "branch_name": "Bandra Kurla Complex (BKC) Branch, Mumbai",
+        "ifsc_code": "HDFC0000124"
+      },
+      "loan_account_no": "HDFC-APP-2024-88419",
+      "loan_type": "Home Equity Loan (Duplicate Fraud Attempt)",
+      "borrower_details": {
+        "primary_borrower": "Vikram Malhotra",
+        "co_borrower": "None",
+        "masked_pan": "BKZPM****J",
+        "ckyc_identifier_hash": "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4"
+      },
+      "financial_terms": {
+        "sanctioned_limit_inr": 18000000.0,
+        "current_outstanding_inr": 0.0,
+        "rate_of_interest_pct": 8.75,
+        "tenure_months": 180,
+        "equated_monthly_installment_inr": 180210.0
+      },
+      "mortgage_creation": {
+        "type_of_mortgage": "Attempted Equitable Mortgage with Forged Paper Chain",
+        "date_of_creation": "2024-08-10",
+        "date_of_cersai_filing": "2024-08-10 (REJECTED/BLOCKED)",
+        "original_deed_number": "FORGED-BDR-3/9912/2024 (COUNTERFEIT)",
+        "sro_registration_office": "SRO Bandra-3"
+      },
+      "charge_status": "BLOCKED_DUPLICATE_COLLISION",
+      "collision_details": {
+        "conflicting_charge_id": "CERSAI-SBI-2024-88912",
+        "conflicting_lender": "State Bank of India",
+        "conflicting_owner": "Rajesh Kumar Sharma & Priya R. Sharma",
+        "root_cause": "Double mortgage fraud attempted on same 3D spatial voxel [z: 13.5m - 16.5m] at CTS 1245/8.",
+        "mitigation_action": "3D-ULPIN Cadastral Engine rejected charge registration and alerted Indian Cyber Crime Coordination Centre (I4C) & HDFC Risk Team."
+      }
+    },
+    {
+      "cersai_security_interest_id": "CERSAI-ICICI-2023-45129",
+      "asset_category": "Immovable Property - Commercial Retail Office",
+      "target_3d_ulpin": "KA02-108-4421908-COM-G02",
+      "base_land_2d_ulpin": "KA02-108-4421908",
+      "cadastral_reference": "Commercial Unit G-02, Ground Floor, TechCorp Residency, BBMP Khata 891/2, Whitefield, Bengaluru 560066",
+      "floor_elevation_envelope": {
+        "z_min_m": 0.0,
+        "z_max_m": 3.5
+      },
+      "lender_details": {
+        "financial_institution": "ICICI Bank Ltd",
+        "branch_code": "0042",
+        "branch_name": "Indiranagar SME Hub, Bengaluru",
+        "ifsc_code": "ICIC0000042"
+      },
+      "loan_account_no": "ICICI-BL-0984512033",
+      "loan_type": "Commercial Property Term Loan",
+      "borrower_details": {
+        "primary_borrower": "CloudNxt IT Solutions Pvt Ltd (Rep by Dir: Anand Swaminathan)",
+        "masked_pan": "AAACC****D",
+        "ckyc_identifier_hash": "2c624232cdd221771294dfbb310aca000a0df6ec9b5feb9ebb95ab83214574f2"
+      },
+      "financial_terms": {
+        "sanctioned_limit_inr": 35000000.0,
+        "current_outstanding_inr": 29500000.0,
+        "rate_of_interest_pct": 9.15,
+        "tenure_months": 120,
+        "equated_monthly_installment_inr": 446720.0
+      },
+      "mortgage_creation": {
+        "type_of_mortgage": "Registered Mortgage",
+        "date_of_creation": "2023-11-12",
+        "date_of_cersai_filing": "2023-11-15",
+        "original_deed_number": "SHV-1-08914-2023-24",
+        "sro_registration_office": "SRO Shivajinagar / K.R. Puram Bengaluru"
+      },
+      "charge_status": "ACTIVE_REGISTERED_MORTGAGE"
+    },
+    {
+      "cersai_security_interest_id": "CERSAI-PNB-2024-11892",
+      "asset_category": "Immovable Property - Residential Flat",
+      "target_3d_ulpin": "DL08-301-7719234-FL06-U602",
+      "base_land_2d_ulpin": "DL08-301-7719234",
+      "cadastral_reference": "Flat No. 602, 6th Floor, Surya Kiran Apartments, Plot 44 Pocket 6, Sector 12 Dwarka, New Delhi 110078",
+      "floor_elevation_envelope": {
+        "z_min_m": 16.5,
+        "z_max_m": 19.8
+      },
+      "lender_details": {
+        "financial_institution": "Punjab National Bank",
+        "branch_code": "1092",
+        "branch_name": "Dwarka Sector 12 Branch, New Delhi",
+        "ifsc_code": "PUNB0109200"
+      },
+      "loan_account_no": "PNB-HL-1092837465",
+      "loan_type": "Housing Loan Scheme",
+      "borrower_details": {
+        "primary_borrower": "Amit Kumar Verma",
+        "co_borrower": "Sunita Verma",
+        "masked_pan": "AEEPV****M",
+        "ckyc_identifier_hash": "11a527c93d4a04eb003b0f547041345ac4e089ff641540f823b63a8d097d14c4"
+      },
+      "financial_terms": {
+        "sanctioned_limit_inr": 9500000.0,
+        "current_outstanding_inr": 8820000.0,
+        "rate_of_interest_pct": 8.4,
+        "tenure_months": 240,
+        "equated_monthly_installment_inr": 81890.0
+      },
+      "mortgage_creation": {
+        "type_of_mortgage": "Equitable Mortgage",
+        "date_of_creation": "2024-01-22",
+        "date_of_cersai_filing": "2024-01-25",
+        "original_deed_number": "SR-IX/Dwarka/4412/2024",
+        "sro_registration_office": "Sub-Registrar IX Kapashera / Dwarka"
+      },
+      "charge_status": "ACTIVE_REGISTERED_MORTGAGE"
+    },
+    {
+      "cersai_security_interest_id": "CERSAI-BOB-2024-33201",
+      "asset_category": "Immovable Property - Underground EV Charging Infrastructure Space",
+      "target_3d_ulpin": "KA02-108-4421908-BS02-EV01",
+      "base_land_2d_ulpin": "KA02-108-4421908",
+      "cadastral_reference": "EV Charging Bays 01 to 05, Basement Level 2 (B2), TechCorp Residency, Whitefield, Bengaluru 560066",
+      "floor_elevation_envelope": {
+        "z_min_m": -6.0,
+        "z_max_m": -3.0
+      },
+      "lender_details": {
+        "financial_institution": "Bank of Baroda",
+        "branch_code": "BOB-WFD",
+        "branch_name": "Whitefield Corporate Banking Branch, Bengaluru",
+        "ifsc_code": "BARB0WHITEF"
+      },
+      "loan_account_no": "BOB-INFRA-88273619",
+      "loan_type": "Green Energy Infrastructure Term Loan",
+      "borrower_details": {
+        "primary_borrower": "VoltCharge Mobility Infrastructure LLP",
+        "masked_pan": "AAAFV****L",
+        "ckyc_identifier_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+      },
+      "financial_terms": {
+        "sanctioned_limit_inr": 22000000.0,
+        "current_outstanding_inr": 20550000.0,
+        "rate_of_interest_pct": 8.9,
+        "tenure_months": 144,
+        "equated_monthly_installment_inr": 249650.0
+      },
+      "mortgage_creation": {
+        "type_of_mortgage": "Hypothecation & Subterranean Leasehold Mortgage",
+        "date_of_creation": "2024-05-10",
+        "date_of_cersai_filing": "2024-05-12",
+        "original_deed_number": "SHV-1-11928-2024-25",
+        "sro_registration_office": "SRO K.R. Puram Bengaluru"
+      },
+      "charge_status": "ACTIVE_REGISTERED_MORTGAGE"
+    }
+  ]
+}

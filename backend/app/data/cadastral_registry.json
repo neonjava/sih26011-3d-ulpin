@@ -1,0 +1,4914 @@
+{
+  "metadata": {
+    "system": "National 3D-ULPIN Spatial Cadastre Engine",
+    "standard": "ISO 19152 LADM / India 3D Cadastral Framework v2.1",
+    "generation_timestamp": "2026-08-26T23:37:55+05:30",
+    "total_complexes": 3,
+    "jurisdictions": [
+      "Maharashtra (MCGM)",
+      "Karnataka (BBMP)",
+      "Delhi (DDA)"
+    ]
+  },
+  "complexes": [
+    {
+      "complex_id": "MUM-SVR-001",
+      "complex_name": "Sagar View Towers",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "district": "Mumbai Suburban (27)",
+      "taluka": "Andheri (045)",
+      "village_locality": "Bandra West",
+      "pin_code": "400050",
+      "cadastral_identifiers": {
+        "2d_ulpin": "MH27-045-8912345",
+        "cts_number": "1245/8",
+        "survey_number": "78/A",
+        "hissa_number": "8",
+        "ward": "H-West",
+        "municipal_authority": "Municipal Corporation of Greater Mumbai (MCGM)",
+        "rera_registration_number": "P51800001234"
+      },
+      "land_parcel": {
+        "parcel_area_sqm": 2450.0,
+        "parcel_area_sqft": 26371.8,
+        "ground_elevation_msl_m": 6.0,
+        "boundary_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                72.82539000000001,
+                19.058200000000003
+              ],
+              [
+                72.82589,
+                19.058200000000003
+              ],
+              [
+                72.82589,
+                19.05865
+              ],
+              [
+                72.82539000000001,
+                19.05865
+              ],
+              [
+                72.82539000000001,
+                19.058200000000003
+              ]
+            ]
+          ]
+        },
+        "cardinal_boundaries": {
+          "north": "CTS No. 1245/7 (Sea Breeze CHS)",
+          "south": "18.30 Meter Wide Municipal D.P. Road",
+          "east": "CTS No. 1245/9 (Private Residential Layout)",
+          "west": "CTS No. 1245/6 & Bandra Bandstand Promenade"
+        }
+      },
+      "building_structure": {
+        "total_wings": 2,
+        "wings": [
+          {
+            "wing_name": "Wing A",
+            "sanctioned_floors": 12,
+            "actual_built_floors": 14,
+            "has_phantom_floors": true,
+            "phantom_floors": [
+              13,
+              14
+            ],
+            "stilt_height_m": 3.5,
+            "total_height_actual_m": 49.0,
+            "sanctioned_height_limit_m": 42.0,
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    72.82544,
+                    19.05824
+                  ],
+                  [
+                    72.82562,
+                    19.05824
+                  ],
+                  [
+                    72.82562,
+                    19.058600000000002
+                  ],
+                  [
+                    72.82544,
+                    19.058600000000002
+                  ],
+                  [
+                    72.82544,
+                    19.05824
+                  ]
+                ]
+              ]
+            },
+            "units": [
+              {
+                "unit_id": "101",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL01-U101",
+                "wing": "Wing A",
+                "floor_number": 1,
+                "z_min_meters": 3.5,
+                "z_max_meters": 6.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 101"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "102",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL01-U102",
+                "wing": "Wing A",
+                "floor_number": 1,
+                "z_min_meters": 3.5,
+                "z_max_meters": 6.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 102"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "201",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL02-U201",
+                "wing": "Wing A",
+                "floor_number": 2,
+                "z_min_meters": 6.5,
+                "z_max_meters": 9.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 201"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "202",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL02-U202",
+                "wing": "Wing A",
+                "floor_number": 2,
+                "z_min_meters": 6.5,
+                "z_max_meters": 9.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 202"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "301",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL03-U301",
+                "wing": "Wing A",
+                "floor_number": 3,
+                "z_min_meters": 9.5,
+                "z_max_meters": 12.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 301"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "302",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL03-U302",
+                "wing": "Wing A",
+                "floor_number": 3,
+                "z_min_meters": 9.5,
+                "z_max_meters": 12.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 302"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "401",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL04-U401",
+                "wing": "Wing A",
+                "floor_number": 4,
+                "z_min_meters": 12.5,
+                "z_max_meters": 15.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 401"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "402",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL04-U402",
+                "wing": "Wing A",
+                "floor_number": 4,
+                "z_min_meters": 12.5,
+                "z_max_meters": 15.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "undivided_land_share_pct": 2.15,
+                "dedicated_parking_slot": "Stilt Parking Slot P-14",
+                "owner_details": {
+                  "primary_owner": "Rajesh Kumar Sharma",
+                  "co_owner": "Priya R. Sharma",
+                  "registered_deed_no": "BDR-3/12458/2024",
+                  "registration_date": "2024-03-15",
+                  "sub_registrar_office": "SRO Bandra-3 (Andheri Taluka)"
+                },
+                "encumbrance_status": "MORTGAGED",
+                "mortgage_details": {
+                  "bank_name": "State Bank of India",
+                  "branch": "Bandra West SME Branch",
+                  "cersai_security_interest_id": "CERSAI-SBI-2024-88912",
+                  "loan_account_no": "SBI-HL-39811029481",
+                  "sanctioned_amount_inr": 17500000,
+                  "outstanding_amount_inr": 16240000,
+                  "charge_creation_date": "2024-03-18"
+                },
+                "fraud_alerts": [
+                  {
+                    "alert_code": "DUPLICATE_MORTGAGE_APPLICATION_ATTEMPT",
+                    "severity": "CRITICAL",
+                    "description": "Scammer 'Vikram Malhotra' attempted duplicate mortgage application at HDFC Bank (Application No. HDFC-APP-2024-88419) using forged chain of title deeds targeting this exact 3D-ULPIN.",
+                    "flagged_timestamp": "2024-08-10T11:42:00+05:30",
+                    "target_bank": "HDFC Bank Ltd (BKC Branch)",
+                    "blocked_by_3d_ulpin": true
+                  }
+                ],
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "501",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL05-U501",
+                "wing": "Wing A",
+                "floor_number": 5,
+                "z_min_meters": 15.5,
+                "z_max_meters": 18.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 501"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "502",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL05-U502",
+                "wing": "Wing A",
+                "floor_number": 5,
+                "z_min_meters": 15.5,
+                "z_max_meters": 18.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 502"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "601",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL06-U601",
+                "wing": "Wing A",
+                "floor_number": 6,
+                "z_min_meters": 18.5,
+                "z_max_meters": 21.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 601"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "602",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL06-U602",
+                "wing": "Wing A",
+                "floor_number": 6,
+                "z_min_meters": 18.5,
+                "z_max_meters": 21.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 602"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "701",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL07-U701",
+                "wing": "Wing A",
+                "floor_number": 7,
+                "z_min_meters": 21.5,
+                "z_max_meters": 24.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 701"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "702",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL07-U702",
+                "wing": "Wing A",
+                "floor_number": 7,
+                "z_min_meters": 21.5,
+                "z_max_meters": 24.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 702"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "801",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL08-U801",
+                "wing": "Wing A",
+                "floor_number": 8,
+                "z_min_meters": 24.5,
+                "z_max_meters": 27.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 801"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "802",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL08-U802",
+                "wing": "Wing A",
+                "floor_number": 8,
+                "z_min_meters": 24.5,
+                "z_max_meters": 27.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 802"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "901",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL09-U901",
+                "wing": "Wing A",
+                "floor_number": 9,
+                "z_min_meters": 27.5,
+                "z_max_meters": 30.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 901"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "902",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL09-U902",
+                "wing": "Wing A",
+                "floor_number": 9,
+                "z_min_meters": 27.5,
+                "z_max_meters": 30.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 902"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1001",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL10-U1001",
+                "wing": "Wing A",
+                "floor_number": 10,
+                "z_min_meters": 30.5,
+                "z_max_meters": 33.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1001"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1002",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL10-U1002",
+                "wing": "Wing A",
+                "floor_number": 10,
+                "z_min_meters": 30.5,
+                "z_max_meters": 33.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1002"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1101",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL11-U1101",
+                "wing": "Wing A",
+                "floor_number": 11,
+                "z_min_meters": 33.5,
+                "z_max_meters": 36.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1101"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1102",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL11-U1102",
+                "wing": "Wing A",
+                "floor_number": 11,
+                "z_min_meters": 33.5,
+                "z_max_meters": 36.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1102"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1201",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL12-U1201",
+                "wing": "Wing A",
+                "floor_number": 12,
+                "z_min_meters": 36.5,
+                "z_max_meters": 39.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 72.5,
+                "carpet_area_sqft": 780.4,
+                "built_up_area_sqm": 86.0,
+                "super_built_up_sqm": 94.25,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1201"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1202",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL12-U1202",
+                "wing": "Wing A",
+                "floor_number": 12,
+                "z_min_meters": 36.5,
+                "z_max_meters": 39.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 88.5,
+                "carpet_area_sqft": 952.6,
+                "built_up_area_sqm": 104.2,
+                "super_built_up_sqm": 115.05,
+                "owner_details": {
+                  "primary_owner": "Resident Owner Wing A - Flat 1202"
+                },
+                "encumbrance_status": "CLEAR_TITLE",
+                "is_sanctioned": true,
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1301",
+                "unit_type": "Penthouse Suite (Duplex Lower)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL13-U1301",
+                "wing": "Wing A",
+                "floor_number": 13,
+                "z_min_meters": 39.5,
+                "z_max_meters": 42.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 125.4,
+                "carpet_area_sqft": 1349.8,
+                "built_up_area_sqm": 145.0,
+                "super_built_up_sqm": 163.0,
+                "is_sanctioned": false,
+                "violation_type": "UNAUTHORIZED_VERTICAL_EXTENSION",
+                "sanction_violation_details": {
+                  "max_sanctioned_floors": 12,
+                  "max_sanctioned_height_m": 42.0,
+                  "unit_elevation_m": "39.5m to 42.5m (Exceeds 42.0m height cap)",
+                  "mcgm_notice_issued": true,
+                  "notice_no": "MCGM/KW/MRTP/2024/771"
+                },
+                "owner_details": {
+                  "primary_owner": "Illegal Promoter / Unregistered Claim",
+                  "registered_deed_no": "FORGED_DEED_ATTEMPT_2024",
+                  "registration_status": "REJECTED_UNAUTHORIZED_FLOOR"
+                },
+                "encumbrance_status": "ILLEGAL_STRUCTURE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1302",
+                "unit_type": "Executive Apartment",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL13-U1302",
+                "wing": "Wing A",
+                "floor_number": 13,
+                "z_min_meters": 39.5,
+                "z_max_meters": 42.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 125.4,
+                "carpet_area_sqft": 1349.8,
+                "built_up_area_sqm": 145.0,
+                "super_built_up_sqm": 163.0,
+                "is_sanctioned": false,
+                "violation_type": "UNAUTHORIZED_VERTICAL_EXTENSION",
+                "sanction_violation_details": {
+                  "max_sanctioned_floors": 12,
+                  "max_sanctioned_height_m": 42.0,
+                  "unit_elevation_m": "39.5m to 42.5m (Exceeds 42.0m height cap)",
+                  "mcgm_notice_issued": true,
+                  "notice_no": "MCGM/KW/MRTP/2024/771"
+                },
+                "owner_details": {
+                  "primary_owner": "Unsold Phantom Inventory (Builder Stock)",
+                  "registered_deed_no": "UNAUTHORIZED",
+                  "registration_status": "LOCKED_BY_CADASTRAL_ENGINE"
+                },
+                "encumbrance_status": "ILLEGAL_STRUCTURE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1401",
+                "unit_type": "Penthouse Suite (Duplex Lower)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL14-U1401",
+                "wing": "Wing A",
+                "floor_number": 14,
+                "z_min_meters": 42.5,
+                "z_max_meters": 45.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 125.4,
+                "carpet_area_sqft": 1349.8,
+                "built_up_area_sqm": 145.0,
+                "super_built_up_sqm": 163.0,
+                "is_sanctioned": false,
+                "violation_type": "UNAUTHORIZED_VERTICAL_EXTENSION",
+                "sanction_violation_details": {
+                  "max_sanctioned_floors": 12,
+                  "max_sanctioned_height_m": 42.0,
+                  "unit_elevation_m": "42.5m to 45.5m (Exceeds 42.0m height cap)",
+                  "mcgm_notice_issued": true,
+                  "notice_no": "MCGM/KW/MRTP/2024/771"
+                },
+                "owner_details": {
+                  "primary_owner": "Illegal Promoter / Unregistered Claim",
+                  "registered_deed_no": "FORGED_DEED_ATTEMPT_2024",
+                  "registration_status": "REJECTED_UNAUTHORIZED_FLOOR"
+                },
+                "encumbrance_status": "ILLEGAL_STRUCTURE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82544,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82544,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1402",
+                "unit_type": "Penthouse Suite (Duplex Upper)",
+                "3d_ulpin": "MH27-045-8912345-WIGA-FL14-U1402",
+                "wing": "Wing A",
+                "floor_number": 14,
+                "z_min_meters": 42.5,
+                "z_max_meters": 45.5,
+                "height_thickness_meters": 3.0,
+                "carpet_area_sqm": 125.4,
+                "carpet_area_sqft": 1349.8,
+                "built_up_area_sqm": 145.0,
+                "super_built_up_sqm": 163.0,
+                "is_sanctioned": false,
+                "violation_type": "UNAUTHORIZED_VERTICAL_EXTENSION",
+                "sanction_violation_details": {
+                  "max_sanctioned_floors": 12,
+                  "max_sanctioned_height_m": 42.0,
+                  "unit_elevation_m": "42.5m to 45.5m (Exceeds 42.0m height cap)",
+                  "mcgm_notice_issued": true,
+                  "notice_no": "MCGM/KW/MRTP/2024/771"
+                },
+                "owner_details": {
+                  "primary_owner": "Unsold Phantom Inventory (Builder Stock)",
+                  "registered_deed_no": "UNAUTHORIZED",
+                  "registration_status": "LOCKED_BY_CADASTRAL_ENGINE"
+                },
+                "encumbrance_status": "ILLEGAL_STRUCTURE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82553,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.05824
+                      ],
+                      [
+                        72.82562,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82553,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "wing_name": "Wing B",
+            "sanctioned_floors": 12,
+            "actual_built_floors": 12,
+            "has_phantom_floors": false,
+            "phantom_floors": [],
+            "stilt_height_m": 3.5,
+            "total_height_actual_m": 42.0,
+            "sanctioned_height_limit_m": 42.0,
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    72.82566000000001,
+                    19.05824
+                  ],
+                  [
+                    72.82584000000001,
+                    19.05824
+                  ],
+                  [
+                    72.82584000000001,
+                    19.058600000000002
+                  ],
+                  [
+                    72.82566000000001,
+                    19.058600000000002
+                  ],
+                  [
+                    72.82566000000001,
+                    19.05824
+                  ]
+                ]
+              ]
+            },
+            "units": [
+              {
+                "unit_id": "101",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL01-U101",
+                "wing": "Wing B",
+                "floor_number": 1,
+                "z_min_meters": 3.5,
+                "z_max_meters": 6.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "102",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL01-U102",
+                "wing": "Wing B",
+                "floor_number": 1,
+                "z_min_meters": 3.5,
+                "z_max_meters": 6.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "201",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL02-U201",
+                "wing": "Wing B",
+                "floor_number": 2,
+                "z_min_meters": 6.5,
+                "z_max_meters": 9.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "202",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL02-U202",
+                "wing": "Wing B",
+                "floor_number": 2,
+                "z_min_meters": 6.5,
+                "z_max_meters": 9.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "301",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL03-U301",
+                "wing": "Wing B",
+                "floor_number": 3,
+                "z_min_meters": 9.5,
+                "z_max_meters": 12.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "302",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL03-U302",
+                "wing": "Wing B",
+                "floor_number": 3,
+                "z_min_meters": 9.5,
+                "z_max_meters": 12.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "401",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL04-U401",
+                "wing": "Wing B",
+                "floor_number": 4,
+                "z_min_meters": 12.5,
+                "z_max_meters": 15.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "402",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL04-U402",
+                "wing": "Wing B",
+                "floor_number": 4,
+                "z_min_meters": 12.5,
+                "z_max_meters": 15.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "501",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL05-U501",
+                "wing": "Wing B",
+                "floor_number": 5,
+                "z_min_meters": 15.5,
+                "z_max_meters": 18.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "502",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL05-U502",
+                "wing": "Wing B",
+                "floor_number": 5,
+                "z_min_meters": 15.5,
+                "z_max_meters": 18.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "601",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL06-U601",
+                "wing": "Wing B",
+                "floor_number": 6,
+                "z_min_meters": 18.5,
+                "z_max_meters": 21.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "602",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL06-U602",
+                "wing": "Wing B",
+                "floor_number": 6,
+                "z_min_meters": 18.5,
+                "z_max_meters": 21.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "701",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL07-U701",
+                "wing": "Wing B",
+                "floor_number": 7,
+                "z_min_meters": 21.5,
+                "z_max_meters": 24.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "702",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL07-U702",
+                "wing": "Wing B",
+                "floor_number": 7,
+                "z_min_meters": 21.5,
+                "z_max_meters": 24.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "801",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL08-U801",
+                "wing": "Wing B",
+                "floor_number": 8,
+                "z_min_meters": 24.5,
+                "z_max_meters": 27.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "802",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL08-U802",
+                "wing": "Wing B",
+                "floor_number": 8,
+                "z_min_meters": 24.5,
+                "z_max_meters": 27.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "901",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL09-U901",
+                "wing": "Wing B",
+                "floor_number": 9,
+                "z_min_meters": 27.5,
+                "z_max_meters": 30.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "902",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL09-U902",
+                "wing": "Wing B",
+                "floor_number": 9,
+                "z_min_meters": 27.5,
+                "z_max_meters": 30.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1001",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL10-U1001",
+                "wing": "Wing B",
+                "floor_number": 10,
+                "z_min_meters": 30.5,
+                "z_max_meters": 33.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1002",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL10-U1002",
+                "wing": "Wing B",
+                "floor_number": 10,
+                "z_min_meters": 30.5,
+                "z_max_meters": 33.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1101",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL11-U1101",
+                "wing": "Wing B",
+                "floor_number": 11,
+                "z_min_meters": 33.5,
+                "z_max_meters": 36.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1102",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL11-U1102",
+                "wing": "Wing B",
+                "floor_number": 11,
+                "z_min_meters": 33.5,
+                "z_max_meters": 36.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1201",
+                "unit_type": "Residential Apartment (2BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL12-U1201",
+                "wing": "Wing B",
+                "floor_number": 12,
+                "z_min_meters": 36.5,
+                "z_max_meters": 39.5,
+                "carpet_area_sqm": 74.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "unit_id": "1202",
+                "unit_type": "Residential Apartment (3BHK)",
+                "3d_ulpin": "MH27-045-8912345-WIGB-FL12-U1202",
+                "wing": "Wing B",
+                "floor_number": 12,
+                "z_min_meters": 36.5,
+                "z_max_meters": 39.5,
+                "carpet_area_sqm": 89.0,
+                "is_sanctioned": true,
+                "encumbrance_status": "CLEAR_TITLE",
+                "spatial_boundary": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.05824
+                      ],
+                      [
+                        72.82584000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.058600000000002
+                      ],
+                      [
+                        72.82566000000001,
+                        19.05824
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "common_amenities_3d": [
+          {
+            "amenity_name": "Ground Stilt Parking & Society Office",
+            "3d_ulpin": "MH27-045-8912345-CMN-STILT-01",
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.5,
+            "area_sqm": 850.0
+          },
+          {
+            "amenity_name": "Rooftop Water Tank & Lift Machine Room (Sanctioned Level)",
+            "3d_ulpin": "MH27-045-8912345-CMN-ROOF-01",
+            "z_min_meters": 39.5,
+            "z_max_meters": 42.0,
+            "area_sqm": 220.0
+          }
+        ]
+      },
+      "cadastral_status": "CONSTRUCTION_VIOLATION_DETECTED",
+      "spatial_integrity_flags": {
+        "phantom_floor_count": 2,
+        "unauthorized_bua_sqm": 1012.0,
+        "active_mortgage_collision": true,
+        "collision_target_ulpin": "MH27-045-8912345-WIGA-FL04-U402"
+      }
+    },
+    {
+      "complex_id": "BLR-TCR-002",
+      "complex_name": "TechCorp Residency",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "district": "Bengaluru Urban (02)",
+      "taluka": "Bengaluru East (108)",
+      "hobli": "K.R. Puram",
+      "village_locality": "Whitefield (IT Corridor)",
+      "pin_code": "560066",
+      "cadastral_identifiers": {
+        "2d_ulpin": "KA02-108-4421908",
+        "bbmp_khata_number": "891/2",
+        "pid_number": "084-W0192-44",
+        "survey_number": "142/1B",
+        "bbmp_ward": "Ward 84 (Hagadur)",
+        "municipal_authority": "Bruhat Bengaluru Mahanagara Palike (BBMP) / BDA",
+        "rera_registration_number": "PRM/KA/RERA/1251/446/PR/210818/004289"
+      },
+      "land_parcel": {
+        "parcel_area_sqm": 6800.0,
+        "parcel_area_sqft": 73194.5,
+        "ground_elevation_msl_m": 890.0,
+        "boundary_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.74905,
+                12.9711
+              ],
+              [
+                77.74995,
+                12.9711
+              ],
+              [
+                77.74995,
+                12.971900000000002
+              ],
+              [
+                77.74905,
+                12.971900000000002
+              ],
+              [
+                77.74905,
+                12.9711
+              ]
+            ]
+          ]
+        },
+        "cardinal_boundaries": {
+          "north": "45-Meter Main International Tech Park Road (ITPL Main Rd)",
+          "south": "Sy No. 142/2 Private Tech Park",
+          "east": "Nallurahalli Lake Buffer Greens",
+          "west": "Sy No. 141/3 Commercial Complex"
+        }
+      },
+      "building_structure": {
+        "total_floors_above_ground": 20,
+        "total_basement_levels": 2,
+        "total_height_m": 68.0,
+        "deepest_basement_level_m": -6.0,
+        "sanctioned_height_limit_m": 68.0,
+        "has_phantom_floors": false,
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.7492,
+                12.97122
+              ],
+              [
+                77.7498,
+                12.97122
+              ],
+              [
+                77.7498,
+                12.97178
+              ],
+              [
+                77.7492,
+                12.97178
+              ],
+              [
+                77.7492,
+                12.97122
+              ]
+            ]
+          ]
+        },
+        "basement_infrastructure": [
+          {
+            "unit_id": "B2-EV-01",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV01",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "MORTGAGED",
+            "cersai_ref": "CERSAI-BOB-2024-33201",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-02",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV02",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "MORTGAGED",
+            "cersai_ref": "CERSAI-BOB-2024-33201",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-03",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV03",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "MORTGAGED",
+            "cersai_ref": "CERSAI-BOB-2024-33201",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-04",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV04",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "MORTGAGED",
+            "cersai_ref": "CERSAI-BOB-2024-33201",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-05",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV05",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "MORTGAGED",
+            "cersai_ref": "CERSAI-BOB-2024-33201",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-06",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV06",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-07",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV07",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-08",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV08",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-09",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV09",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-10",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV10",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-11",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV11",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-12",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV12",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-13",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV13",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-14",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV14",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-15",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV15",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-16",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV16",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-17",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV17",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-18",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV18",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-19",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV19",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B2-EV-20",
+            "unit_type": "Underground EV Charging Slot & Smart Stacking Bay",
+            "3d_ulpin": "KA02-108-4421908-BS02-EV20",
+            "level": "Basement Level 2 (B2)",
+            "z_min_meters": -6.0,
+            "z_max_meters": -3.0,
+            "area_sqm": 25.0,
+            "power_capacity_kw": 22.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "cersai_ref": null,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-01",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P01",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-02",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P02",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-03",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P03",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-04",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P04",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-05",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P05",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-06",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P06",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-07",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P07",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-08",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P08",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-09",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P09",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-10",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P10",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-11",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P11",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-12",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P12",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-13",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P13",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-14",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P14",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-15",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P15",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-16",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P16",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-17",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P17",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-18",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P18",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-19",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P19",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-20",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P20",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-21",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P21",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-22",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P22",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-23",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P23",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-24",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P24",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-25",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P25",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-26",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P26",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-27",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P27",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-28",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P28",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-29",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P29",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "B1-PKG-30",
+            "unit_type": "Basement Standard Parking Slot",
+            "3d_ulpin": "KA02-108-4421908-BS01-P30",
+            "level": "Basement Level 1 (B1)",
+            "z_min_meters": -3.0,
+            "z_max_meters": 0.0,
+            "area_sqm": 18.5,
+            "is_sanctioned": true
+          }
+        ],
+        "commercial_units": [
+          {
+            "unit_id": "COM-G01",
+            "unit_name": "Anchor Retail Superstore",
+            "3d_ulpin": "KA02-108-4421908-COM-G01",
+            "floor": "Ground Floor",
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.5,
+            "carpet_area_sqm": 350.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "COM-G02",
+            "unit_name": "Fintech & Banking Experience Center",
+            "3d_ulpin": "KA02-108-4421908-COM-G02",
+            "floor": "Ground Floor",
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.5,
+            "carpet_area_sqm": 220.0,
+            "encumbrance_status": "MORTGAGED",
+            "mortgage_details": {
+              "bank_name": "ICICI Bank Ltd",
+              "cersai_security_interest_id": "CERSAI-ICICI-2023-45129",
+              "loan_account_no": "ICICI-BL-0984512033",
+              "borrower": "CloudNxt IT Solutions Pvt Ltd",
+              "sanctioned_amount_inr": 35000000,
+              "outstanding_amount_inr": 29500000
+            },
+            "is_sanctioned": true
+          },
+          {
+            "unit_id": "COM-F101",
+            "unit_name": "Tech Incubator & Co-Working Hub",
+            "3d_ulpin": "KA02-108-4421908-COM-F101",
+            "floor": "1st Floor",
+            "z_min_meters": 3.5,
+            "z_max_meters": 7.0,
+            "carpet_area_sqm": 480.0,
+            "encumbrance_status": "CLEAR_TITLE",
+            "is_sanctioned": true
+          }
+        ],
+        "residential_units": [
+          {
+            "unit_id": "0201",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL02-U0201",
+            "floor_number": 2,
+            "z_min_meters": 7.0,
+            "z_max_meters": 10.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0202",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL02-U0202",
+            "floor_number": 2,
+            "z_min_meters": 7.0,
+            "z_max_meters": 10.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0203",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL02-U0203",
+            "floor_number": 2,
+            "z_min_meters": 7.0,
+            "z_max_meters": 10.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0204",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL02-U0204",
+            "floor_number": 2,
+            "z_min_meters": 7.0,
+            "z_max_meters": 10.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0301",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL03-U0301",
+            "floor_number": 3,
+            "z_min_meters": 10.0,
+            "z_max_meters": 13.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0302",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL03-U0302",
+            "floor_number": 3,
+            "z_min_meters": 10.0,
+            "z_max_meters": 13.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0303",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL03-U0303",
+            "floor_number": 3,
+            "z_min_meters": 10.0,
+            "z_max_meters": 13.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0304",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL03-U0304",
+            "floor_number": 3,
+            "z_min_meters": 10.0,
+            "z_max_meters": 13.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0401",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL04-U0401",
+            "floor_number": 4,
+            "z_min_meters": 13.0,
+            "z_max_meters": 16.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0402",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL04-U0402",
+            "floor_number": 4,
+            "z_min_meters": 13.0,
+            "z_max_meters": 16.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0403",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL04-U0403",
+            "floor_number": 4,
+            "z_min_meters": 13.0,
+            "z_max_meters": 16.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0404",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL04-U0404",
+            "floor_number": 4,
+            "z_min_meters": 13.0,
+            "z_max_meters": 16.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0501",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL05-U0501",
+            "floor_number": 5,
+            "z_min_meters": 16.0,
+            "z_max_meters": 19.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0502",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL05-U0502",
+            "floor_number": 5,
+            "z_min_meters": 16.0,
+            "z_max_meters": 19.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0503",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL05-U0503",
+            "floor_number": 5,
+            "z_min_meters": 16.0,
+            "z_max_meters": 19.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0504",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL05-U0504",
+            "floor_number": 5,
+            "z_min_meters": 16.0,
+            "z_max_meters": 19.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0601",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL06-U0601",
+            "floor_number": 6,
+            "z_min_meters": 19.0,
+            "z_max_meters": 22.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0602",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL06-U0602",
+            "floor_number": 6,
+            "z_min_meters": 19.0,
+            "z_max_meters": 22.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0603",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL06-U0603",
+            "floor_number": 6,
+            "z_min_meters": 19.0,
+            "z_max_meters": 22.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0604",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL06-U0604",
+            "floor_number": 6,
+            "z_min_meters": 19.0,
+            "z_max_meters": 22.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0701",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL07-U0701",
+            "floor_number": 7,
+            "z_min_meters": 22.0,
+            "z_max_meters": 25.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0702",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL07-U0702",
+            "floor_number": 7,
+            "z_min_meters": 22.0,
+            "z_max_meters": 25.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0703",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL07-U0703",
+            "floor_number": 7,
+            "z_min_meters": 22.0,
+            "z_max_meters": 25.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0704",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL07-U0704",
+            "floor_number": 7,
+            "z_min_meters": 22.0,
+            "z_max_meters": 25.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0801",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL08-U0801",
+            "floor_number": 8,
+            "z_min_meters": 25.0,
+            "z_max_meters": 28.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0802",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL08-U0802",
+            "floor_number": 8,
+            "z_min_meters": 25.0,
+            "z_max_meters": 28.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0803",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL08-U0803",
+            "floor_number": 8,
+            "z_min_meters": 25.0,
+            "z_max_meters": 28.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0804",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL08-U0804",
+            "floor_number": 8,
+            "z_min_meters": 25.0,
+            "z_max_meters": 28.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0901",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL09-U0901",
+            "floor_number": 9,
+            "z_min_meters": 28.0,
+            "z_max_meters": 31.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0902",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL09-U0902",
+            "floor_number": 9,
+            "z_min_meters": 28.0,
+            "z_max_meters": 31.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0903",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL09-U0903",
+            "floor_number": 9,
+            "z_min_meters": 28.0,
+            "z_max_meters": 31.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "0904",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL09-U0904",
+            "floor_number": 9,
+            "z_min_meters": 28.0,
+            "z_max_meters": 31.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1001",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL10-U1001",
+            "floor_number": 10,
+            "z_min_meters": 31.0,
+            "z_max_meters": 34.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1002",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL10-U1002",
+            "floor_number": 10,
+            "z_min_meters": 31.0,
+            "z_max_meters": 34.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1003",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL10-U1003",
+            "floor_number": 10,
+            "z_min_meters": 31.0,
+            "z_max_meters": 34.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1004",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL10-U1004",
+            "floor_number": 10,
+            "z_min_meters": 31.0,
+            "z_max_meters": 34.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1101",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL11-U1101",
+            "floor_number": 11,
+            "z_min_meters": 34.0,
+            "z_max_meters": 37.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1102",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL11-U1102",
+            "floor_number": 11,
+            "z_min_meters": 34.0,
+            "z_max_meters": 37.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1103",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL11-U1103",
+            "floor_number": 11,
+            "z_min_meters": 34.0,
+            "z_max_meters": 37.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1104",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL11-U1104",
+            "floor_number": 11,
+            "z_min_meters": 34.0,
+            "z_max_meters": 37.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1201",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL12-U1201",
+            "floor_number": 12,
+            "z_min_meters": 37.0,
+            "z_max_meters": 40.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1202",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL12-U1202",
+            "floor_number": 12,
+            "z_min_meters": 37.0,
+            "z_max_meters": 40.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1203",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL12-U1203",
+            "floor_number": 12,
+            "z_min_meters": 37.0,
+            "z_max_meters": 40.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1204",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL12-U1204",
+            "floor_number": 12,
+            "z_min_meters": 37.0,
+            "z_max_meters": 40.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1301",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL13-U1301",
+            "floor_number": 13,
+            "z_min_meters": 40.0,
+            "z_max_meters": 43.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1302",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL13-U1302",
+            "floor_number": 13,
+            "z_min_meters": 40.0,
+            "z_max_meters": 43.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1303",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL13-U1303",
+            "floor_number": 13,
+            "z_min_meters": 40.0,
+            "z_max_meters": 43.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1304",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL13-U1304",
+            "floor_number": 13,
+            "z_min_meters": 40.0,
+            "z_max_meters": 43.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1401",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL14-U1401",
+            "floor_number": 14,
+            "z_min_meters": 43.0,
+            "z_max_meters": 46.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1402",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL14-U1402",
+            "floor_number": 14,
+            "z_min_meters": 43.0,
+            "z_max_meters": 46.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1403",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL14-U1403",
+            "floor_number": 14,
+            "z_min_meters": 43.0,
+            "z_max_meters": 46.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1404",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL14-U1404",
+            "floor_number": 14,
+            "z_min_meters": 43.0,
+            "z_max_meters": 46.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1501",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL15-U1501",
+            "floor_number": 15,
+            "z_min_meters": 46.0,
+            "z_max_meters": 49.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1502",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL15-U1502",
+            "floor_number": 15,
+            "z_min_meters": 46.0,
+            "z_max_meters": 49.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1503",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL15-U1503",
+            "floor_number": 15,
+            "z_min_meters": 46.0,
+            "z_max_meters": 49.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1504",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL15-U1504",
+            "floor_number": 15,
+            "z_min_meters": 46.0,
+            "z_max_meters": 49.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1601",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL16-U1601",
+            "floor_number": 16,
+            "z_min_meters": 49.0,
+            "z_max_meters": 52.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1602",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL16-U1602",
+            "floor_number": 16,
+            "z_min_meters": 49.0,
+            "z_max_meters": 52.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1603",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL16-U1603",
+            "floor_number": 16,
+            "z_min_meters": 49.0,
+            "z_max_meters": 52.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1604",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL16-U1604",
+            "floor_number": 16,
+            "z_min_meters": 49.0,
+            "z_max_meters": 52.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1701",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL17-U1701",
+            "floor_number": 17,
+            "z_min_meters": 52.0,
+            "z_max_meters": 55.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1702",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL17-U1702",
+            "floor_number": 17,
+            "z_min_meters": 52.0,
+            "z_max_meters": 55.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1703",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL17-U1703",
+            "floor_number": 17,
+            "z_min_meters": 52.0,
+            "z_max_meters": 55.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1704",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL17-U1704",
+            "floor_number": 17,
+            "z_min_meters": 52.0,
+            "z_max_meters": 55.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1801",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL18-U1801",
+            "floor_number": 18,
+            "z_min_meters": 55.0,
+            "z_max_meters": 58.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1802",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL18-U1802",
+            "floor_number": 18,
+            "z_min_meters": 55.0,
+            "z_max_meters": 58.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1803",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL18-U1803",
+            "floor_number": 18,
+            "z_min_meters": 55.0,
+            "z_max_meters": 58.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1804",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL18-U1804",
+            "floor_number": 18,
+            "z_min_meters": 55.0,
+            "z_max_meters": 58.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1901",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL19-U1901",
+            "floor_number": 19,
+            "z_min_meters": 58.0,
+            "z_max_meters": 61.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1902",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL19-U1902",
+            "floor_number": 19,
+            "z_min_meters": 58.0,
+            "z_max_meters": 61.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1903",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL19-U1903",
+            "floor_number": 19,
+            "z_min_meters": 58.0,
+            "z_max_meters": 61.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "1904",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL19-U1904",
+            "floor_number": 19,
+            "z_min_meters": 58.0,
+            "z_max_meters": 61.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "2001",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL20-U2001",
+            "floor_number": 20,
+            "z_min_meters": 61.0,
+            "z_max_meters": 64.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "2002",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL20-U2002",
+            "floor_number": 20,
+            "z_min_meters": 61.0,
+            "z_max_meters": 64.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "2003",
+            "unit_type": "Condominium 2BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL20-U2003",
+            "floor_number": 20,
+            "z_min_meters": 61.0,
+            "z_max_meters": 64.0,
+            "carpet_area_sqm": 84.2,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          },
+          {
+            "unit_id": "2004",
+            "unit_type": "Condominium 3BHK",
+            "3d_ulpin": "KA02-108-4421908-RES-FL20-U2004",
+            "floor_number": 20,
+            "z_min_meters": 61.0,
+            "z_max_meters": 64.0,
+            "carpet_area_sqm": 112.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE"
+          }
+        ],
+        "air_rights_parcels": [
+          {
+            "right_id": "AIR-01-SOLAR",
+            "right_type": "Commercial Solar Photovoltaic Grid Rights",
+            "3d_ulpin": "KA02-108-4421908-AIR01-SOLAR",
+            "z_min_meters": 67.0,
+            "z_max_meters": 70.0,
+            "area_sqm": 1200.0,
+            "installed_capacity_kwp": 150,
+            "holder": "SunGrid Energy Power Developer LLP",
+            "validity_years": 25,
+            "is_sanctioned": true
+          },
+          {
+            "right_id": "AIR-02-SKYLOU",
+            "right_type": "Rooftop Sky Lounge & Heli-Observation Air Rights",
+            "3d_ulpin": "KA02-108-4421908-AIR02-SKYLOU",
+            "z_min_meters": 70.0,
+            "z_max_meters": 73.0,
+            "area_sqm": 450.0,
+            "holder": "TechCorp Hospitality Club",
+            "is_sanctioned": true
+          }
+        ]
+      },
+      "cadastral_status": "FULLY_COMPLIANT_3D_STRATIFIED",
+      "spatial_integrity_flags": {
+        "phantom_floor_count": 0,
+        "unauthorized_bua_sqm": 0.0,
+        "active_mortgage_collision": false
+      }
+    },
+    {
+      "complex_id": "DEL-DWK-003",
+      "complex_name": "Surya Kiran Apartments (DDA Shanti Enclave)",
+      "city": "New Delhi",
+      "state": "Delhi",
+      "district": "South West Delhi (08)",
+      "sub_division": "Dwarka (301)",
+      "village_locality": "Kakrola / Sector 12 Dwarka",
+      "pin_code": "110078",
+      "cadastral_identifiers": {
+        "2d_ulpin": "DL08-301-7719234",
+        "dda_plot_number": "Plot No. 44, Pocket 6",
+        "khasra_number": "182/4",
+        "sector": "Sector 12 Dwarka",
+        "municipal_authority": "Delhi Development Authority (DDA) / MCD",
+        "rera_registration_number": "DLRERA2019P0028"
+      },
+      "land_parcel": {
+        "parcel_area_sqm": 3500.0,
+        "parcel_area_sqft": 37673.7,
+        "ground_elevation_msl_m": 215.0,
+        "boundary_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.0415,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.591450000000002
+              ],
+              [
+                77.0415,
+                28.591450000000002
+              ],
+              [
+                77.0415,
+                28.59095
+              ]
+            ]
+          ]
+        },
+        "cardinal_boundaries": {
+          "north": "24-Meter Sector Dividing Road",
+          "south": "DMRC Metro Blue Line Alignment Corridor & Green Belt",
+          "east": "DDA Plot No. 45 (Cooperative Group Housing)",
+          "west": "DDA Community Park & Master Plan Road"
+        }
+      },
+      "building_structure": {
+        "total_floors_above_ground": 10,
+        "total_basement_levels": 0,
+        "foundation_type": "Compensated Shallow Raft Slab (South) & Friction Piles (North)",
+        "total_height_m": 33.0,
+        "sanctioned_height_limit_m": 35.0,
+        "has_phantom_floors": false,
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.04158,
+                28.59102
+              ],
+              [
+                77.04202,
+                28.59102
+              ],
+              [
+                77.04202,
+                28.59138
+              ],
+              [
+                77.04158,
+                28.59138
+              ],
+              [
+                77.04158,
+                28.59102
+              ]
+            ]
+          ]
+        },
+        "residential_units": [
+          {
+            "unit_id": "0101",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL01-U0101",
+            "floor_number": 1,
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.3,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0102",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL01-U0102",
+            "floor_number": 1,
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.3,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0103",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL01-U0103",
+            "floor_number": 1,
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.3,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0104",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL01-U0104",
+            "floor_number": 1,
+            "z_min_meters": 0.0,
+            "z_max_meters": 3.3,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0201",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL02-U0201",
+            "floor_number": 2,
+            "z_min_meters": 3.3,
+            "z_max_meters": 6.6,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0202",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL02-U0202",
+            "floor_number": 2,
+            "z_min_meters": 3.3,
+            "z_max_meters": 6.6,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0203",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL02-U0203",
+            "floor_number": 2,
+            "z_min_meters": 3.3,
+            "z_max_meters": 6.6,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0204",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL02-U0204",
+            "floor_number": 2,
+            "z_min_meters": 3.3,
+            "z_max_meters": 6.6,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0301",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL03-U0301",
+            "floor_number": 3,
+            "z_min_meters": 6.6,
+            "z_max_meters": 9.9,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0302",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL03-U0302",
+            "floor_number": 3,
+            "z_min_meters": 6.6,
+            "z_max_meters": 9.9,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0303",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL03-U0303",
+            "floor_number": 3,
+            "z_min_meters": 6.6,
+            "z_max_meters": 9.9,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0304",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL03-U0304",
+            "floor_number": 3,
+            "z_min_meters": 6.6,
+            "z_max_meters": 9.9,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0401",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL04-U0401",
+            "floor_number": 4,
+            "z_min_meters": 9.9,
+            "z_max_meters": 13.2,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0402",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL04-U0402",
+            "floor_number": 4,
+            "z_min_meters": 9.9,
+            "z_max_meters": 13.2,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0403",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL04-U0403",
+            "floor_number": 4,
+            "z_min_meters": 9.9,
+            "z_max_meters": 13.2,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0404",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL04-U0404",
+            "floor_number": 4,
+            "z_min_meters": 9.9,
+            "z_max_meters": 13.2,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0501",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL05-U0501",
+            "floor_number": 5,
+            "z_min_meters": 13.2,
+            "z_max_meters": 16.5,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0502",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL05-U0502",
+            "floor_number": 5,
+            "z_min_meters": 13.2,
+            "z_max_meters": 16.5,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0503",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL05-U0503",
+            "floor_number": 5,
+            "z_min_meters": 13.2,
+            "z_max_meters": 16.5,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0504",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL05-U0504",
+            "floor_number": 5,
+            "z_min_meters": 13.2,
+            "z_max_meters": 16.5,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0601",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL06-U0601",
+            "floor_number": 6,
+            "z_min_meters": 16.5,
+            "z_max_meters": 19.8,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0602",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL06-U0602",
+            "floor_number": 6,
+            "z_min_meters": 16.5,
+            "z_max_meters": 19.8,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "MORTGAGED",
+            "mortgage_details": {
+              "bank_name": "Punjab National Bank",
+              "branch": "Dwarka Sector 12 Branch",
+              "cersai_security_interest_id": "CERSAI-PNB-2024-11892",
+              "loan_account_no": "PNB-HL-1092837465",
+              "borrower": "Amit Kumar Verma & Sunita Verma",
+              "sanctioned_amount_inr": 9500000,
+              "outstanding_amount_inr": 8820000,
+              "charge_creation_date": "2024-01-22"
+            }
+          },
+          {
+            "unit_id": "0603",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL06-U0603",
+            "floor_number": 6,
+            "z_min_meters": 16.5,
+            "z_max_meters": 19.8,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0604",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL06-U0604",
+            "floor_number": 6,
+            "z_min_meters": 16.5,
+            "z_max_meters": 19.8,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0701",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL07-U0701",
+            "floor_number": 7,
+            "z_min_meters": 19.8,
+            "z_max_meters": 23.1,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0702",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL07-U0702",
+            "floor_number": 7,
+            "z_min_meters": 19.8,
+            "z_max_meters": 23.1,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0703",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL07-U0703",
+            "floor_number": 7,
+            "z_min_meters": 19.8,
+            "z_max_meters": 23.1,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0704",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL07-U0704",
+            "floor_number": 7,
+            "z_min_meters": 19.8,
+            "z_max_meters": 23.1,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0801",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL08-U0801",
+            "floor_number": 8,
+            "z_min_meters": 23.1,
+            "z_max_meters": 26.4,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0802",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL08-U0802",
+            "floor_number": 8,
+            "z_min_meters": 23.1,
+            "z_max_meters": 26.4,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0803",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL08-U0803",
+            "floor_number": 8,
+            "z_min_meters": 23.1,
+            "z_max_meters": 26.4,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0804",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL08-U0804",
+            "floor_number": 8,
+            "z_min_meters": 23.1,
+            "z_max_meters": 26.4,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0901",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL09-U0901",
+            "floor_number": 9,
+            "z_min_meters": 26.4,
+            "z_max_meters": 29.7,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0902",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL09-U0902",
+            "floor_number": 9,
+            "z_min_meters": 26.4,
+            "z_max_meters": 29.7,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0903",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL09-U0903",
+            "floor_number": 9,
+            "z_min_meters": 26.4,
+            "z_max_meters": 29.7,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "0904",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL09-U0904",
+            "floor_number": 9,
+            "z_min_meters": 26.4,
+            "z_max_meters": 29.7,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "1001",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL10-U1001",
+            "floor_number": 10,
+            "z_min_meters": 29.7,
+            "z_max_meters": 33.0,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "1002",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL10-U1002",
+            "floor_number": 10,
+            "z_min_meters": 29.7,
+            "z_max_meters": 33.0,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "1003",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL10-U1003",
+            "floor_number": 10,
+            "z_min_meters": 29.7,
+            "z_max_meters": 33.0,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          },
+          {
+            "unit_id": "1004",
+            "unit_type": "3BHK HIG Apartment",
+            "3d_ulpin": "DL08-301-7719234-FL10-U1004",
+            "floor_number": 10,
+            "z_min_meters": 29.7,
+            "z_max_meters": 33.0,
+            "carpet_area_sqm": 94.8,
+            "carpet_area_sqft": 1020.4,
+            "built_up_area_sqm": 110.5,
+            "is_sanctioned": true,
+            "encumbrance_status": "CLEAR_TITLE",
+            "mortgage_details": null
+          }
+        ]
+      },
+      "subsurface_easements": [
+        {
+          "easement_id": "DMRC-BLUE-LINE-TNL-08",
+          "easement_title": "DMRC Underground Metro Tunnel & Safety Envelope",
+          "3d_ulpin": "DL08-301-7719234-SUB01-DMRC-TNL",
+          "easement_holder": "Delhi Metro Rail Corporation Ltd. (DMRC)",
+          "statutory_act": "Metro Railways (Construction of Works) Act, 1978 & DMRC Easement Deed No. DEL/DDA/2006/4481",
+          "depth_profile": {
+            "tunnel_crown_depth_m": -9.0,
+            "tunnel_invert_depth_m": -15.0,
+            "nominal_centerline_depth_m": -12.0,
+            "protection_buffer_top_m": -6.0,
+            "protection_buffer_bottom_m": -18.0,
+            "z_min_meters": -18.0,
+            "z_max_meters": -6.0
+          },
+          "subsurface_polygon": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  77.0415,
+                  28.59095
+                ],
+                [
+                  77.04209999999999,
+                  28.59095
+                ],
+                [
+                  77.04209999999999,
+                  28.59112
+                ],
+                [
+                  77.0415,
+                  28.59112
+                ],
+                [
+                  77.0415,
+                  28.59095
+                ]
+              ]
+            ]
+          },
+          "vertical_construction_restrictions": {
+            "no_piling_depth_threshold_m": -6.0,
+            "prohibited_activities": [
+              "Borewell drilling below -6.0m",
+              "Heavy dynamic compaction",
+              "Deep driven pile foundations within 15m radius of tunnel axis",
+              "Subterranean basement excavation into buffer zone"
+            ],
+            "permitted_foundation": "Engineered cantilever shallow raft slab resting at maximum depth -4.50m"
+          },
+          "clash_detection_status": "MONITORED_ACTIVE_EASEMENT",
+          "is_sanctioned": true
+        }
+      ],
+      "cadastral_status": "EASEMENT_PROTECTED_STRUCTURE",
+      "spatial_integrity_flags": {
+        "subsurface_tunnel_easement_active": true,
+        "metro_easement_clash_risk": "HIGH_MONITORING",
+        "piling_depth_restricted": true
+      }
+    }
+  ],
+  "geojson_feature_collection": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                72.82539000000001,
+                19.058200000000003
+              ],
+              [
+                72.82589,
+                19.058200000000003
+              ],
+              [
+                72.82589,
+                19.05865
+              ],
+              [
+                72.82539000000001,
+                19.05865
+              ],
+              [
+                72.82539000000001,
+                19.058200000000003
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "complex_id": "MUM-SVR-001",
+          "name": "Sagar View Towers",
+          "2d_ulpin": "MH27-045-8912345",
+          "city": "Mumbai",
+          "status": "CONSTRUCTION_VIOLATION_DETECTED"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.74905,
+                12.9711
+              ],
+              [
+                77.74995,
+                12.9711
+              ],
+              [
+                77.74995,
+                12.971900000000002
+              ],
+              [
+                77.74905,
+                12.971900000000002
+              ],
+              [
+                77.74905,
+                12.9711
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "complex_id": "BLR-TCR-002",
+          "name": "TechCorp Residency",
+          "2d_ulpin": "KA02-108-4421908",
+          "city": "Bengaluru",
+          "status": "FULLY_COMPLIANT_3D_STRATIFIED"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.0415,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.591450000000002
+              ],
+              [
+                77.0415,
+                28.591450000000002
+              ],
+              [
+                77.0415,
+                28.59095
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "complex_id": "DEL-DWK-003",
+          "name": "Surya Kiran Apartments (DDA Shanti Enclave)",
+          "2d_ulpin": "DL08-301-7719234",
+          "city": "New Delhi",
+          "status": "EASEMENT_PROTECTED_STRUCTURE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.0415,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.59095
+              ],
+              [
+                77.04209999999999,
+                28.59112
+              ],
+              [
+                77.0415,
+                28.59112
+              ],
+              [
+                77.0415,
+                28.59095
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "feature_type": "Subsurface_Metro_Easement",
+          "3d_ulpin": "DL08-301-7719234-SUB01-DMRC-TNL",
+          "z_min": -18.0,
+          "z_max": -6.0,
+          "holder": "DMRC"
+        }
+      }
+    ]
+  }
+}
