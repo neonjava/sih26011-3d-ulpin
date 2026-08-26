@@ -4,124 +4,48 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   
   body {
-    @apply bg-[#070A12] text-slate-100 min-h-screen font-sans selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden;
-    background-image: 
-      radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%);
-    background-attachment: fixed;
+    @apply bg-slate-50 text-slate-900 min-h-screen font-sans selection:bg-blue-600 selection:text-white antialiased;
   }
 
-  /* Custom scrollbar */
+  /* Clean Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: rgba(11, 15, 25, 0.8);
+    background: #f1f5f9;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.4);
+    background: #cbd5e1;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(59, 130, 246, 0.7);
+    background: #94a3b8;
   }
 }
 
 @layer components {
-  /* Glassmorphism Styles */
-  .glass-panel {
-    background: rgba(17, 24, 39, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  /* Clean Light Theme Cards */
+  .clean-card {
+    @apply bg-white border border-slate-200 shadow-sm rounded-xl;
   }
 
-  .glass-panel-glow {
-    background: rgba(17, 24, 39, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    box-shadow: 0 0 25px -4px rgba(59, 130, 246, 0.25), inset 0 0 15px 0 rgba(59, 130, 246, 0.05);
+  .clean-card-hover {
+    @apply bg-white border border-slate-200 shadow-sm rounded-xl transition-all duration-200 hover:border-slate-300 hover:shadow-md;
   }
 
-  .glass-panel-danger {
-    background: rgba(26, 14, 18, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(239, 68, 68, 0.4);
-    box-shadow: 0 0 30px -4px rgba(239, 68, 68, 0.35), inset 0 0 20px 0 rgba(239, 68, 68, 0.1);
+  .clean-input {
+    @apply bg-white border border-slate-300 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all;
   }
 
-  .glass-panel-success {
-    background: rgba(10, 28, 22, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    box-shadow: 0 0 25px -4px rgba(16, 185, 129, 0.3), inset 0 0 15px 0 rgba(16, 185, 129, 0.08);
-  }
-
-  .glass-card {
-    background: rgba(31, 41, 55, 0.5);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.2s ease-in-out;
-  }
-
-  .glass-card:hover {
-    background: rgba(31, 41, 55, 0.75);
-    border-color: rgba(59, 130, 246, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .glass-input {
-    background: rgba(11, 15, 25, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #f8fafc;
-    transition: all 0.2s ease;
-  }
-  .glass-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 15px -2px rgba(59, 130, 246, 0.5);
-  }
-
-  /* Cyber Grid Background */
-  .cyber-grid {
-    background-size: 32px 32px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  }
-
-  .cyber-grid-blue {
-    background-size: 24px 24px;
-    background-image: 
-      linear-gradient(to right, rgba(59, 130, 246, 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
-  }
-
-  /* Hazard pattern for illegal phantom floors */
-  .hazard-stripes {
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(239, 68, 68, 0.2),
-      rgba(239, 68, 68, 0.2) 10px,
-      rgba(0, 0, 0, 0.3) 10px,
-      rgba(0, 0, 0, 0.3) 20px
-    );
-  }
-
-  /* Custom Range Slider */
+  /* Custom Clean Range Slider */
   input[type=range] {
     -webkit-appearance: none;
-    background: rgba(31, 41, 55, 0.8);
+    background: #e2e8f0;
     border-radius: 8px;
     height: 6px;
   }
@@ -131,13 +55,13 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #3b82f6;
+    background: #2563eb;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     border: 2px solid #ffffff;
     transition: transform 0.1s ease;
   }
   input[type=range]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 }

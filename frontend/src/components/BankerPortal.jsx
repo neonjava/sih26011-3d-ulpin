@@ -8,7 +8,6 @@ import {
   Building2, 
   FileText, 
   Search, 
-  Sparkles, 
   ArrowRight, 
   Download, 
   Scale, 
@@ -70,7 +69,7 @@ export default function BankerPortal({ onNavigateTo3D, activeParcel }) {
       setTimeout(() => {
         setVerificationResult(result);
         setIsVerifying(false);
-      }, 700); // realistic spatial processing pause
+      }, 500);
     } catch (err) {
       console.error(err);
       setIsVerifying(false);
@@ -78,374 +77,319 @@ export default function BankerPortal({ onNavigateTo3D, activeParcel }) {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn pb-12">
+    <div className="space-y-6 pb-12">
       
-      {/* Top Banner */}
-      <div className="glass-panel p-6 rounded-2xl border border-blue-500/20 shadow-xl relative overflow-hidden">
-        <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Top Banner (Clean Light Theme) */}
+      <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40 uppercase">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-rose-50 text-rose-700 border border-rose-200 uppercase">
                 Next-Gen 3D CERSAI Anti-Fraud Engine
               </span>
-              <span className="text-slate-500 text-xs">•</span>
-              <span className="text-blue-400 font-mono text-xs">Section 26D SARFAESI Compliant</span>
+              <span className="text-slate-300 text-xs">•</span>
+              <span className="text-blue-700 font-mono text-xs font-semibold">SARFAESI Section 26D Compliant</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               3D Volumetric Mortgage & Title Verification
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed">
               Eliminate double mortgages and phantom floor fraud across Indian banking. Query the real-time ISO 19152 3D Cadastre registry to detect spatial overlaps in vertical space before disbursing loans.
             </p>
           </div>
-
-          <div className="flex items-center gap-2 bg-slate-900/90 p-3 rounded-xl border border-slate-800 self-start md:self-auto">
-            <Scale className="w-6 h-6 text-cyan-400 flex-shrink-0" />
-            <div className="text-left font-mono">
-              <span className="text-[10px] text-slate-400 block">Bank Failure Rate</span>
-              <span className="text-xs font-extrabold text-emerald-400">0.00% (3D Guarded)</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Demo Fraud Scenarios Presets Bar */}
-        <div className="mt-6 pt-5 border-t border-white/10">
-          <div className="flex items-center gap-2 mb-3">
-            <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
-              1-Click Demo Fraud Scenarios (Instant Jury Verification)
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-            {DEMO_PRESETS.map((preset) => {
-              const isSelected = selectedPresetId === preset.id;
-              return (
-                <button
-                  key={preset.id}
-                  onClick={() => handleApplyPreset(preset)}
-                  className={`p-3 rounded-xl text-left transition-all relative border ${
-                    isSelected 
-                      ? 'bg-blue-900/40 border-blue-400 shadow-neon-blue' 
-                      : 'bg-slate-900/70 border-slate-800 hover:border-slate-700 hover:bg-slate-850'
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase ${
-                      preset.badgeColor === 'red' ? 'bg-red-500/20 text-red-400 border border-red-500/40' :
-                      preset.badgeColor === 'amber' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' :
-                      preset.badgeColor === 'rose' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' :
-                      'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                    }`}>
-                      {preset.badge}
-                    </span>
-                    {isSelected && <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />}
-                  </div>
-                  <h4 className="text-xs font-bold text-white line-clamp-1">{preset.title}</h4>
-                  <p className="text-[10px] text-slate-400 mt-1 line-clamp-2">{preset.description}</p>
-                </button>
-              );
-            })}
+          
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => handleApplyPreset(DEMO_PRESETS[0])}
+              className="px-3.5 py-2 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg shadow-sm transition"
+            >
+              Demo: Trigger Double Mortgage
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Verification Grid */}
+      {/* Main Grid: Form on Left, Results on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        {/* Left Column: Loan Application Form */}
-        <div className="lg:col-span-5 glass-panel p-5 sm:p-6 rounded-2xl border border-white/10 shadow-xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
-            <div className="flex items-center gap-2">
-              <Banknote className="w-5 h-5 text-blue-400" />
-              <h2 className="text-sm font-extrabold text-white uppercase tracking-wider">
-                Loan Application Details
-              </h2>
+        {/* Left Column: Loan Application Inputs & Quick Presets */}
+        <div className="lg:col-span-5 space-y-5">
+          
+          {/* Quick Scenario Presets Card */}
+          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">
+              ⚡ 1-Click Test Scenarios (Indian Banking)
+            </h3>
+            <div className="space-y-2">
+              {DEMO_PRESETS.map((preset) => (
+                <button
+                  key={preset.id}
+                  onClick={() => handleApplyPreset(preset)}
+                  className={`w-full text-left p-3 rounded-lg border text-xs transition-all ${
+                    selectedPresetId === preset.id
+                      ? 'bg-blue-50/70 border-blue-400 text-blue-900 font-medium'
+                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  <div className="flex items-center justify-between font-bold">
+                    <span>{preset.title}</span>
+                    <span className={`text-[10px] px-2 py-0.5 rounded font-mono ${
+                      preset.expectedOutcome === 'CLASH_DETECTED'
+                        ? 'bg-rose-100 text-rose-700 border border-rose-200'
+                        : (preset.expectedOutcome === 'PHANTOM_FLOOR' ? 'bg-purple-100 text-purple-700 border border-purple-200' : 'bg-emerald-100 text-emerald-700 border border-emerald-200')
+                    }`}>
+                      {preset.expectedOutcome === 'CLASH_DETECTED' ? 'DUPLICATE MORTGAGE' : (preset.expectedOutcome === 'PHANTOM_FLOOR' ? 'PHANTOM FLOOR' : 'CLEAR TITLE')}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">
+                    {preset.description}
+                  </p>
+                </button>
+              ))}
             </div>
-            <span className="text-[11px] font-mono text-slate-400">Step 1 of 2</span>
           </div>
 
-          {/* Form Fields */}
-          <div className="space-y-3.5 text-xs">
-            <div>
-              <label className="text-slate-300 font-semibold block mb-1">Inquiring Bank / Institution</label>
-              <select
-                value={bankName}
-                onChange={(e) => setBankName(e.target.value)}
-                className="w-full glass-input rounded-xl p-2.5 text-xs cursor-pointer font-medium"
-              >
-                <option value="HDFC Bank Ltd">HDFC Bank Ltd (Commercial Lending)</option>
-                <option value="State Bank of India">State Bank of India (Bandra Branch)</option>
-                <option value="ICICI Bank Ltd">ICICI Bank Ltd (Mortgages)</option>
-                <option value="Axis Bank Ltd">Axis Bank Ltd</option>
-                <option value="Punjab National Bank">Punjab National Bank</option>
-                <option value="Kotak Mahindra Bank">Kotak Mahindra Bank</option>
-              </select>
-            </div>
+          {/* Loan Underwriting Form */}
+          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              Loan Application Details
+            </h3>
 
+            {/* Target Parcel */}
             <div>
-              <label className="text-slate-300 font-semibold block mb-1">Applicant Name</label>
-              <input
-                type="text"
-                value={applicantName}
-                onChange={(e) => setApplicantName(e.target.value)}
-                className="w-full glass-input rounded-xl p-2.5 text-xs font-medium"
-                placeholder="e.g. Vikramaditya Sharma"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-slate-300 font-semibold block mb-1">Loan Amount (₹)</label>
-                <input
-                  type="text"
-                  value={loanAmount}
-                  onChange={(e) => setLoanAmount(e.target.value)}
-                  className="w-full glass-input rounded-xl p-2.5 text-xs font-mono font-bold text-cyan-300"
-                  placeholder="₹ 1,85,00,000"
-                />
-              </div>
-              <div>
-                <label className="text-slate-300 font-semibold block mb-1">Facility Type</label>
-                <select
-                  value={loanType}
-                  onChange={(e) => setLoanType(e.target.value)}
-                  className="w-full glass-input rounded-xl p-2.5 text-xs cursor-pointer"
-                >
-                  <option value="Home Loan Refinancing">Home Loan Refinancing</option>
-                  <option value="First-Time Homebuyer Loan">First-Time Homebuyer Loan</option>
-                  <option value="Builder Project Finance">Builder Project Finance</option>
-                  <option value="Ancillary Parking Unit Mortgage">Ancillary Parking Mortgage</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label className="text-slate-300 font-semibold block mb-1">Select Land Parcel</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Cadastral Property (2D Land Base)
+              </label>
               <select
                 value={selectedParcelId}
                 onChange={(e) => {
                   setSelectedParcelId(e.target.value);
-                  const p = PARCELS.find(item => item.id === e.target.value);
-                  if (p && p.floors[0]?.units[0]) {
-                    setSelectedUnitId(p.floors[0].units[0].id);
-                  }
-                  setVerificationResult(null);
+                  const p = PARCELS.find(x => x.id === e.target.value);
+                  if (p) setSelectedUnitId(p.floors[0].units[0].id);
                 }}
-                className="w-full glass-input rounded-xl p-2.5 text-xs cursor-pointer font-semibold text-white"
+                className="w-full clean-input text-xs"
               >
-                {PARCELS.map(p => (
+                {PARCELS.map((p) => (
                   <option key={p.id} value={p.id}>
-                    📍 {p.city} - {p.name} ({p.surveyNumber})
+                    {p.city}: {p.property_name} (CTS: {p.cts_number})
                   </option>
                 ))}
               </select>
             </div>
 
+            {/* Target 3D Spatial Unit */}
             <div>
-              <label className="text-slate-300 font-semibold block mb-1">
-                Target 3D Unit / Voxel (Vertical Space)
+              <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Pledged 3D Spatial Unit (Apartment / Floor)
               </label>
               <select
                 value={selectedUnitId}
-                onChange={(e) => {
-                  setSelectedUnitId(e.target.value);
-                  setVerificationResult(null);
-                }}
-                className="w-full glass-input rounded-xl p-2.5 text-xs cursor-pointer font-mono font-bold text-blue-300"
+                onChange={(e) => setSelectedUnitId(e.target.value)}
+                className="w-full clean-input text-xs font-mono"
               >
-                {allUnitsInParcel.map(u => (
+                {allUnitsInParcel.map((u) => (
                   <option key={u.id} value={u.id}>
-                    Floor {u.floorNumber}: {u.unitNumber} ({u.carpetArea} m²) {u.hasConflict ? '⚠️' : ''}
+                    Unit {u.unitNumber} (Floor {u.floorNumber}) — {u.ulpin_3d}
                   </option>
                 ))}
               </select>
             </div>
-          </div>
 
-          {/* Action Trigger Button */}
-          <div className="pt-2">
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Target Lending Bank
+                </label>
+                <input 
+                  type="text"
+                  value={bankName}
+                  onChange={(e) => setBankName(e.target.value)}
+                  className="w-full clean-input text-xs font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Sanction Amount (INR)
+                </label>
+                <input 
+                  type="text"
+                  value={loanAmount}
+                  onChange={(e) => setLoanAmount(e.target.value)}
+                  className="w-full clean-input text-xs font-medium"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Applicant / Borrower Name
+              </label>
+              <input 
+                type="text"
+                value={applicantName}
+                onChange={(e) => setApplicantName(e.target.value)}
+                className="w-full clean-input text-xs"
+              />
+            </div>
+
+            {/* Run Verification Button */}
             <button
               onClick={handleRunVerification}
               disabled={isVerifying}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs shadow-neon-blue transition-all duration-300 disabled:opacity-50"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-lg shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99] disabled:opacity-50"
             >
               {isVerifying ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Executing 3D Spatial Octree Collision Query...</span>
+                  <span>Running 3D Spatial Intersection Query...</span>
                 </>
               ) : (
                 <>
-                  <ShieldAlert className="w-4 h-4" />
+                  <ShieldCheck className="w-4 h-4" />
                   <span>Run 3D Spatial Conflict & Anti-Fraud Check</span>
-                  <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
+
           </div>
+
         </div>
 
-        {/* Right Column: 3D Conflict Verification Results Panel */}
-        <div className="lg:col-span-7 space-y-4">
+        {/* Right Column: Verification Results Display */}
+        <div className="lg:col-span-7">
           {verificationResult ? (
-            <div className={`p-6 rounded-2xl glass-panel border transition-all duration-500 ${
-              verificationResult.status === 'SAFE_TO_LEND'
-                ? 'glass-panel-success border-emerald-500/50'
-                : 'glass-panel-danger border-rose-500/50 shadow-neon-red'
-            }`}>
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5 animate-fadeIn">
               
-              {/* Verdict Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className={`p-3 rounded-xl ${
-                    verificationResult.status === 'SAFE_TO_LEND'
-                      ? 'bg-emerald-500/20 text-emerald-400'
-                      : 'bg-rose-500/20 text-rose-400 animate-pulse'
-                  }`}>
-                    {verificationResult.status === 'SAFE_TO_LEND' ? (
-                      <ShieldCheck className="w-8 h-8" />
+              {/* Status Header Alert */}
+              <div className={`p-4 rounded-xl border ${
+                verificationResult.status === 'CRITICAL_FRAUD_DETECTED' || verificationResult.status === 'DUPLICATE_MORTGAGE'
+                  ? 'bg-rose-50 border-rose-200 text-rose-900'
+                  : (verificationResult.status === 'SANCTION_BREACH' ? 'bg-purple-50 border-purple-200 text-purple-900' : 'bg-emerald-50 border-emerald-200 text-emerald-900')
+              }`}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    {verificationResult.status === 'CLEAR' ? (
+                      <CheckCircle2 className="w-8 h-8 text-emerald-600 flex-shrink-0" />
                     ) : (
-                      <ShieldAlert className="w-8 h-8" />
+                      <ShieldAlert className="w-8 h-8 text-rose-600 flex-shrink-0" />
                     )}
+                    <div>
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider block opacity-80">
+                        Volumetric Cadastre Decision
+                      </span>
+                      <h2 className="text-xl font-black">
+                        {verificationResult.status === 'CLEAR' ? 'TITLE CLEAR: APPROVED FOR LOAN' : 'CRITICAL 3D CONFLICT: LOAN REJECTED'}
+                      </h2>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                      3D CERSAI VERDICT
-                    </span>
-                    <h3 className={`text-xl font-extrabold ${
-                      verificationResult.status === 'SAFE_TO_LEND' ? 'text-emerald-300' : 'text-rose-400'
+
+                  <div className="text-right">
+                    <div className="text-[11px] font-semibold opacity-70">Fraud Risk Score</div>
+                    <div className={`text-2xl font-black ${
+                      verificationResult.riskScore > 70 ? 'text-rose-600' : 'text-emerald-600'
                     }`}>
-                      {verificationResult.status === 'SAFE_TO_LEND'
-                        ? 'CLEARED: 100% SAFE TO LEND'
-                        : 'REJECTED: CRITICAL 3D FRAUD DETECTED'}
-                    </h3>
+                      {verificationResult.riskScore}/100
+                    </div>
                   </div>
                 </div>
 
-                {/* Risk Score Gauge */}
-                <div className="text-right flex sm:flex-col items-center sm:items-end justify-between">
-                  <span className="text-[10px] font-mono text-slate-400">FRAUD RISK INDEX</span>
-                  <span className={`text-2xl font-black font-mono ${
-                    verificationResult.riskScore > 50 ? 'text-rose-400' : 'text-emerald-400'
-                  }`}>
-                    {verificationResult.riskScore}/100
-                  </span>
-                </div>
-              </div>
-
-              {/* Detailed Breakdown Cards */}
-              <div className="my-5 p-4 rounded-xl bg-slate-950/70 border border-white/5 space-y-3">
-                <p className="text-xs text-slate-200 leading-relaxed font-medium">
-                  {verificationResult.conflictDetails}
+                <p className="text-xs mt-3 pt-2 border-t border-current/10 leading-relaxed font-medium">
+                  {verificationResult.message}
                 </p>
+              </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 border-t border-white/10 text-xs">
-                  <div>
-                    <span className="text-slate-500 text-[10px] block">Spatial Collision Volume</span>
-                    <span className={`font-mono font-bold ${
-                      verificationResult.overlapVolume !== '0.0 m³' ? 'text-rose-400' : 'text-emerald-400'
-                    }`}>
-                      {verificationResult.overlapVolume} ({verificationResult.overlapPercentage})
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 text-[10px] block">Active Encumbrance Bank</span>
-                    <span className="text-slate-200 font-semibold">{verificationResult.existingBank}</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 text-[10px] block">CERSAI Asset ID</span>
-                    <span className="font-mono text-cyan-300">{verificationResult.existingCersai}</span>
-                  </div>
+              {/* Conflict Forensic Breakdown if Clashed */}
+              {verificationResult.conflicts && verificationResult.conflicts.length > 0 && (
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                    Forensic 3D Spatial Collision Report
+                  </h4>
+
+                  {verificationResult.conflicts.map((c, i) => (
+                    <div key={i} className="bg-white p-3.5 rounded-lg border border-slate-200 space-y-2 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-rose-700 flex items-center gap-1.5">
+                          <AlertTriangle className="w-4 h-4 text-rose-600" />
+                          <span>Conflicting Lien Holder: {c.conflictingBank}</span>
+                        </span>
+                        <span className="font-mono text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                          {c.conflictingCersaiId}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-100 text-[11px]">
+                        <div>
+                          <div className="text-slate-500">Overlap Volume:</div>
+                          <div className="font-bold text-slate-800">{c.overlapVolumeCum || 270.0} m³ (100%)</div>
+                        </div>
+                        <div>
+                          <div className="text-slate-500">Registered Borrower:</div>
+                          <div className="font-bold text-slate-800">{c.conflictingBorrower || 'Vikramaditya Roy'}</div>
+                        </div>
+                        <div>
+                          <div className="text-slate-500">Original Sanction:</div>
+                          <div className="font-bold text-slate-800">{c.sanctionDate || '20 Nov 2023'}</div>
+                        </div>
+                        <div>
+                          <div className="text-slate-500">Prior Loan Value:</div>
+                          <div className="font-bold text-slate-800">₹ {(c.loanAmountInr / 10000000).toFixed(2)} Cr</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              )}
 
-              {/* 3D-ULPIN Spatial Target Reference */}
-              <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-xs font-mono mb-6">
-                <span className="text-slate-400 text-[10px] block">Target 3D-ULPIN Voxel Identifier:</span>
-                <span className="text-blue-300 font-bold break-all">{verificationResult.ulpin3d}</span>
-              </div>
-
-              {/* Actions Footer */}
-              <div className="flex flex-col sm:flex-row items-center gap-3">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => setShowCertificateModal(true)}
-                  className="w-full sm:w-1/2 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 shadow-md transition"
+                  className="flex-1 min-w-[200px] py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow-sm flex items-center justify-center gap-2 transition"
                 >
-                  <Download className="w-4 h-4 text-cyan-400" />
-                  <span>Download Title NOC / Blocker PDF</span>
+                  <Download className="w-4 h-4" />
+                  <span>Download Official 3D Title Certificate</span>
                 </button>
 
                 <button
-                  onClick={() => {
-                    const unit = allUnitsInParcel.find(u => u.id === selectedUnitId);
-                    onNavigateTo3D(unit || allUnitsInParcel[0]);
-                  }}
-                  className="w-full sm:w-1/2 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-neon-blue transition"
+                  onClick={() => onNavigateTo3D(allUnitsInParcel.find(u => u.id === selectedUnitId))}
+                  className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition"
                 >
-                  <Boxes className="w-4 h-4" />
-                  <span>Highlight Voxel in 3D Digital Twin</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <Building2 className="w-4 h-4 text-blue-600" />
+                  <span>View in 3D Twin</span>
                 </button>
               </div>
+
             </div>
           ) : (
-            /* Empty State / Standby Guide */
-            <div className="p-8 sm:p-12 rounded-2xl glass-panel border border-dashed border-slate-800 text-center space-y-4 flex flex-col items-center justify-center h-full min-h-[380px]">
-              <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20 shadow-neon-blue">
-                <Boxes className="w-10 h-10 animate-bounce" />
+            <div className="bg-white p-12 rounded-xl border border-slate-200 shadow-sm text-center flex flex-col items-center justify-center min-h-[420px]">
+              <div className="w-16 h-16 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 mb-4 shadow-sm">
+                <ShieldCheck className="w-8 h-8" />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">Spatial Title Verification Engine Ready</h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto leading-relaxed">
-                  Select a demo fraud preset above or enter loan parameters to query vertical spatial intersections against existing CERSAI encumbrance registries.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4 text-xs text-slate-400 font-mono pt-2">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-400" /> ISO 19152 LADM</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan-400" /> 3D Octree Raycasting</span>
-              </div>
+              <h3 className="text-base font-bold text-slate-900">
+                Ready for 3D Spatial Title Verification
+              </h3>
+              <p className="text-xs text-slate-500 max-w-sm mt-1 leading-relaxed">
+                Select an Indian banking scenario preset on the left or enter a candidate property to perform an instant volumetric clash query.
+              </p>
             </div>
           )}
-
-          {/* 2D vs 3D Cadastre Comparative Comparison Card */}
-          <div className="glass-panel p-4 rounded-xl border border-white/5 text-xs">
-            <h4 className="font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <Scale className="w-4 h-4 text-cyan-400" />
-              <span>Why Legacy 2D CERSAI Fails in High-Rise Properties</span>
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-300">
-              <div className="p-2.5 rounded-lg bg-red-950/20 border border-red-500/20">
-                <span className="text-red-400 font-bold block mb-1">❌ Legacy 2D Cadastre (Bhulekh / CERSAI)</span>
-                <p className="text-slate-400">
-                  Collapses all 14 floors onto a single flat (X, Y) plot. Cannot distinguish Floor 4 Flat 402 from Floor 14 Flat 1401. Fraudsters easily register multiple loans using altered unit nomenclatures.
-                </p>
-              </div>
-              <div className="p-2.5 rounded-lg bg-blue-950/30 border border-blue-500/30">
-                <span className="text-cyan-300 font-bold block mb-1">✅ 3D-ULPIN Volumetric Cadastre (SIH26011)</span>
-                <p className="text-slate-300">
-                  Assigns exact volumetric bounding box $[X, Y, Z_{min}, Z_{max}]$. Mathematically prevents two mortgages from occupying the same 3D voxel space ($V_A \cap V_B = 0$).
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
 
       {/* Official Certificate Modal */}
-      <LoanCertificateModal
-        isOpen={showCertificateModal}
-        onClose={() => setShowCertificateModal(false)}
-        result={verificationResult}
-        application={{
-          bankName,
-          applicantName,
-          loanAmount,
-          loanType
-        }}
-      />
+      {showCertificateModal && (
+        <LoanCertificateModal 
+          result={verificationResult}
+          applicantName={applicantName}
+          bankName={bankName}
+          parcel={currentParcel}
+          unit={allUnitsInParcel.find(u => u.id === selectedUnitId)}
+          onClose={() => setShowCertificateModal(false)}
+        />
+      )}
+
     </div>
   );
 }
