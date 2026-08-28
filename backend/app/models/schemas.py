@@ -35,6 +35,8 @@ class UnitResponse(BaseModel):
     type: UnitType
     z_min: float
     z_max: float
+    area_sqm: Optional[float] = 78.5
+    status: Optional[str] = "Clear Title"
 
 class BuildingResponse(BaseModel):
     id: str
@@ -56,3 +58,42 @@ class TopologyCheckResult(BaseModel):
     valid: bool
     summary: str
     violations: List[TopologyViolation] = []
+
+# ── Drone Simulation Schemas ───────────────────────────────────────────
+
+class DroneExtrusionRequest(BaseModel):
+    geometry: dict = Field(..., description="2D GeoJSON Polygon of raw drone/LiDAR building footprint")
+    floor_count: int = Field(default=5, ge=1, le=100, description="Number of above-ground floors detected")
+    building_id: str = Field(default="B101", description="Building identifier")
+    state: str = Field(default="MH", min_length=2, max_length=2, description="2-letter Indian state code")
+    district: str = Field(default="MUM", min_length=2, max_length=5, description="District code")
+    parcel_id: str = Field(default="P101", description="Cadastral Parcel ID")
+    floor_height: float = Field(default=3.0, gt=0, description="Floor-to-floor height in meters")
+    base_elevation: float = Field(default=0.0, description="Ground plinth datum elevation in meters")
+    units_per_floor: int = Field(default=3, ge=1, le=8, description="Number of unit parcels to subdivide per floor plate")
+    include_basement: bool = Field(default=False, description="Whether subsurface basement levels were detected")
+
+class DroneUnitResult(BaseModel):
+    ulpin: str
+    floor: int
+    unit: str
+    owner: str
+    type: UnitType
+    z_min: float
+    z_max: float
+    area_sqm: float
+    volume_cum: float
+    status: str = "Clear Title"
+    geometry: dict
+
+class DroneExtrusionResponse(BaseModel):
+    success: bool
+    building_id: str
+    ulpin_prefix: str
+    total_floors: int
+    total_units: int
+    total_height_m: float
+    total_built_up_area_sqm: float
+    total_volume_cum: float
+    units: List[DroneUnitResult]
+    summary: str

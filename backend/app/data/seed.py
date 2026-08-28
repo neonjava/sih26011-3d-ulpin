@@ -2,7 +2,7 @@
 Seed demo data: 1 building with 5 floors + 1 basement in Mumbai (Bandra).
 
 Creates:
-- 1 parcel (MH-MUM-P001)
+- 1 parcel (MH-MUM-P001) - Bandra West Cadastral Survey
 - 1 building (B001): GF + F01-F04 + BF01
 - 18 residential/commercial/utility units + 3 parking units = 21 total
 - 1 underground Metro tunnel asset
@@ -20,7 +20,7 @@ def seed_demo_data():
     if db.parcels:
         return
 
-    # ── Building footprint (approx 30m × 20m rectangle in Bandra) ──────────
+    # ── Building footprint (approx 30m × 20m rectangle in Bandra West) ─────
     footprint = [
         [72.8370, 19.0596],
         [72.8373, 19.0596],
@@ -35,16 +35,19 @@ def seed_demo_data():
     db.add_parcel(parcel_ulpin, {
         "ulpin": parcel_ulpin,
         "geometry": {"type": "Polygon", "coordinates": [footprint]},
-        "owner": "State Government of Maharashtra",
-        "land_use": "mixed",
+        "owner": "Government of Maharashtra (Revenue & Forest Dept)",
+        "land_use": "mixed_residential_commercial",
         "area_sqm": 600.0,
-        "address": "Plot 42, Bandra West, Mumbai 400050",
+        "address": "CTS No. 1042/A, Bandra Reclamation, Bandra West, Mumbai 400050",
+        "cts_survey_no": "CTS-1042/A",
+        "sub_registrar_office": "Bandra SRO-IV (Mumbai Suburban)",
     })
 
     # ── Building ────────────────────────────────────────────────────────────
     building_id = "B001"
     db.add_building(building_id, {
         "id": building_id,
+        "building_name": "Bandra Heights (Parcel P001)",
         "ulpin_prefix": f"{parcel_ulpin}-{building_id}",
         "total_height": 15.0,
         "num_floors": 5,
@@ -52,6 +55,9 @@ def seed_demo_data():
         "building_type": "mixed",
         "geometry": {"type": "Polygon", "coordinates": [footprint]},
         "ground_elevation": 0.0,
+        "sanction_height": 18.0,
+        "municipal_authority": "MCGM (Municipal Corporation of Greater Mumbai - H/West Ward)",
+        "approval_order_no": "MCGM/CHE/CT/1492/2023",
     })
 
     # ── Unit strip geometries (split footprint into 3 vertical strips) ─────
@@ -85,21 +91,43 @@ def seed_demo_data():
             return "utility" if unit_idx == 0 else "commercial"
         return "residential"
 
-    # ── Mock Indian owner names ────────────────────────────────────────────
-    owners = [
-        "Rajesh Sharma", "Priya Patel", "Amit Singh",
-        "Sneha Reddy", "Vikram Joshi", "Ananya Gupta",
-        "Kiran Desai", "Meera Nair", "Rohan Kapoor",
-        "Deepa Iyer", "Suresh Kumar", "Neha Malhotra",
-        "Arjun Rao", "Kavita Bhat", "Sanjay Mishra",
-        "Pooja Pillai", "Manish Tiwari", "Ritu Agarwal",
+    # ── Mock Indian Cadastral Profiles (Real names, Title status, Banks) ───
+    unit_profiles = [
+        # BF01 (Basement Parking)
+        {"owner": "Society Common Stacker Bay A", "status": "Allotted", "area": 60.0},
+        {"owner": "Smart EV Hub Ltd", "status": "Registered Lease", "area": 60.0},
+        {"owner": "BESCOM Substation & Pump Room", "status": "Critical Infrastructure", "area": 80.0},
+
+        # GF (Ground Floor Utility & Commercial)
+        {"owner": "Society Maintenance & Solar Grid", "status": "Common Area", "area": 75.0},
+        {"owner": "Oberoi Retail & Pharmacy", "status": "Clear Title", "area": 85.0},
+        {"owner": "HDFC Bank ATM & Digital Branch", "status": "Registered Lease", "area": 85.0},
+
+        # Floor 1 (Residential)
+        {"owner": "Rajesh & Sunita Sharma", "status": "Clear Title", "area": 78.5},
+        {"owner": "Priya Patel", "status": "Clear Title", "area": 78.5},
+        {"owner": "Amit Vikram Singh", "status": "Mortgaged (SBI)", "area": 95.0},
+
+        # Floor 2 (Residential)
+        {"owner": "Sneha Reddy & K. Reddy", "status": "Clear Title", "area": 78.5},
+        {"owner": "Vikramaditya Joshi", "status": "Mortgaged (HDFC Bank)", "area": 78.5},
+        {"owner": "Ananya Gupta", "status": "Clear Title", "area": 95.0},
+
+        # Floor 3 (Residential)
+        {"owner": "Kiran & Shalini Desai", "status": "Clear Title", "area": 82.0},
+        {"owner": "Meera Nair", "status": "Clear Title", "area": 82.0},
+        {"owner": "Rohan Kapoor", "status": "Mortgaged (ICICI Bank)", "area": 105.0},
+
+        # Floor 4 (Penthouses / Luxury Units)
+        {"owner": "Deepa & Ramanathan Iyer", "status": "Clear Title", "area": 92.0},
+        {"owner": "Suresh Kumar Deshmukh", "status": "Clear Title", "area": 92.0},
+        {"owner": "Dr. Neha & Arjun Malhotra", "status": "Clear Title", "area": 115.0},
     ]
 
-    # Unit label mapping: U01->A, U02->B, U03->C
     unit_labels = {1: "A", 2: "B", 3: "C"}
 
     # ── Create all units ───────────────────────────────────────────────────
-    owner_idx = 0
+    profile_idx = 0
     for floor in floors:
         fn = floor["floor_no"]
         z_min = floor["z_min"]
@@ -109,7 +137,6 @@ def seed_demo_data():
             unit_id = f"U{i:02d}"
             unit_type = get_unit_type(fn, i - 1)
 
-            # Generate the full 3D ULPIN
             ulpin = generate_ulpin(
                 state="MH",
                 district="MUM",
@@ -121,8 +148,8 @@ def seed_demo_data():
                 z_max=z_max,
             )
 
-            owner = owners[owner_idx % len(owners)]
-            owner_idx += 1
+            profile = unit_profiles[profile_idx % len(unit_profiles)]
+            profile_idx += 1
 
             db.add_unit(ulpin, {
                 "ulpin": ulpin,
@@ -130,22 +157,24 @@ def seed_demo_data():
                 "floor": fn,
                 "unit": unit_labels[i],
                 "geometry": {"type": "Polygon", "coordinates": [strips[i - 1]]},
-                "owner": owner,
+                "owner": profile["owner"],
                 "type": unit_type,
                 "z_min": z_min,
                 "z_max": z_max,
+                "area_sqm": profile["area"],
+                "status": profile["status"],
             })
 
     # ── Underground asset (Metro tunnel near the building) ─────────────────
     db.underground_assets.append({
-        "name": "DMRC Blue Line Tunnel Section 12",
+        "name": "MMRDA Metro Line 3 (Aqua Line) Colaba-Bandra-SEEPZ",
         "type": "metro_tunnel",
         "geometry": {
             "type": "LineString",
             "coordinates": [[72.8365, 19.0590], [72.8378, 19.0600]],
         },
-        "z_min": -20.0,
-        "z_max": -15.0,
+        "z_min": -22.0,
+        "z_max": -16.0,
         "buffer_radius": 5.0,
-        "operator": "DMRC",
+        "operator": "MMRDA (Mumbai Metropolitan Region Development Authority)",
     })

@@ -1,5 +1,5 @@
 """
-Pytest Test Suite for 3D ULPIN Cadastre & AI Topology Validation.
+Pytest Test Suite for 3D ULPIN Cadastre, AI Topology Validation & Drone 3D Simulation.
 """
 import pytest
 from fastapi.testclient import TestClient
@@ -202,3 +202,63 @@ def test_api_core_endpoints():
         assert "geometry" in res_unit.json()
         assert "floor" in res_unit.json()
         assert "type" in res_unit.json()
+
+
+def test_drone_simulation_endpoint():
+    with TestClient(app) as client:
+        footprint_payload = {
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [72.8370, 19.0596],
+                        [72.8375, 19.0596],
+                        [72.8375, 19.0600],
+                        [72.8370, 19.0600],
+                        [72.8370, 19.0596],
+                    ]
+                ]
+            },
+            "floor_count": 4,
+            "building_id": "B202",
+            "state": "MH",
+            "district": "MUM",
+            "parcel_id": "P202",
+            "floor_height": 3.0,
+            "base_elevation": 0.0,
+            "units_per_floor": 3,
+            "include_basement": True,
+        }
+
+        # Test root endpoint
+        res = client.post("/simulation/drone-to-3d", json=footprint_payload)
+        assert res.status_code == 200
+        data = res.json()
+
+        assert data["success"] is True
+        assert data["building_id"] == "B202"
+        assert data["total_floors"] == 5  # 4 above ground + 1 basement
+        assert data["total_units"] == 15  # 5 floors * 3 units
+        assert data["total_height_m"] == 12.0
+        assert len(data["units"]) == 15
+
+        # Check basement unit format
+        bsmt_unit = data["units"][0]
+        assert bsmt_unit["floor"] == -1
+        assert bsmt_unit["z_min"] == -3.0
+        assert bsmt_unit["z_max"] == 0.0
+        assert "BF01" in bsmt_unit["ulpin"]
+        assert bsmt_unit["type"] == "parking"
+
+        # Check top floor unit format
+        top_unit = data["units"][-1]
+        assert top_unit["floor"] == 3
+        assert top_unit["z_min"] == 9.0
+        assert top_unit["z_max"] == 12.0
+        assert "F03" in top_unit["ulpin"]
+        assert top_unit["type"] == "residential"
+
+        # Test /api prefix endpoint
+        res_api = client.post("/api/simulation/drone-to-3d", json=footprint_payload)
+        assert res_api.status_code == 200
+        assert res_api.json()["success"] is True
