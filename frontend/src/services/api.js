@@ -13,13 +13,13 @@
  * This module bridges that gap with a transform layer.
  */
 
-import { MOCK_BUILDING_DATA } from '../data/mockBuildingData';
+import { MOCK_BUILDING_DATA } from '../data/mockBuildingData.js';
 
 // ============================================================================
 // ⚙️ API CONFIGURATION
 // ============================================================================
 export const USE_MOCK_DATA = false; // ← LIVE: connected to backend at localhost:8000
-export const API_BASE_URL = 'http://localhost:8000';
+export const API_BASE_URL = 'http://127.0.0.1:8000';
 
 /**
  * Map unit index within a floor to a 3D position for Three.js rendering.
@@ -60,8 +60,8 @@ function makeUnitNumber(floorNo, unitLabel) {
     const bLevel = Math.abs(floorNo);
     return `Bay B${bLevel}-${unitLabel}`;
   }
-  // Use floor-based numbering: floor 0 → 0xx, floor 1 → 1xx, etc.
-  const floorPrefix = floorNo;
+  // Use floor-based numbering: floor 0 → Unit 101, floor 1 → Unit 201, etc.
+  const floorPrefix = floorNo + 1;
   const unitSuffix = unitLabel.charCodeAt(0) - 64; // A→1, B→2, C→3
   return `Unit ${floorPrefix}0${unitSuffix}`;
 }
@@ -86,23 +86,24 @@ function transformBackendData(units, buildingInfo) {
   });
 
   // Build above-ground floors (sorted by floor number)
-  // Frontend expects floor_no starting at 1 for ground floor display
+  // Backend floors: 0 (ground), 1, 2, 3, 4 -> 5 floors total!
   const sortedFloorNos = [...floorMap.keys()].sort((a, b) => a - b);
 
-  const floors = sortedFloorNos.map((floorNo) => {
+  const floors = sortedFloorNos.map((floorNo, index) => {
     const floorUnits = floorMap.get(floorNo);
-    const zMin = floorUnits[0]?.z_min ?? floorNo * 3.0;
-    const zMax = floorUnits[0]?.z_max ?? (floorNo + 1) * 3.0;
+    const zMin = floorUnits[0]?.z_min ?? index * 3.0;
+    const zMax = floorUnits[0]?.z_max ?? (index + 1) * 3.0;
 
     return {
-      floor_no: floorNo + 1, // Backend: 0=ground → Frontend: 1=first displayed floor
+      floor_no: index + 1, // 1 to 5
+      raw_floor_no: floorNo,
       elevation_base: zMin,
       elevation_top: zMax,
       units: floorUnits.map((u, idx) => ({
         ulpin: u.ulpin,
         unit_number: makeUnitNumber(floorNo, u.unit),
         owner: u.owner,
-        type: u.type === 'commercial' ? 'utility' : u.type, // Map commercial → utility for color
+        type: u.type,
         area_sqm: 68.5, // Default area for demo
         status: 'Clear Title',
         geometry: buildUnitGeometry(idx, floorUnits.length, u.z_min, u.z_max),
@@ -124,12 +125,12 @@ function transformBackendData(units, buildingInfo) {
 
   return {
     building_id: buildingInfo?.id || 'B001',
-    building_name: buildingInfo?.building_name || `Building ${buildingInfo?.id || 'B001'}`,
+    building_name: buildingInfo?.building_name || `Bandra Heights (Parcel P001)`,
     city: buildingInfo?.city || 'Mumbai, Maharashtra',
-    address: buildingInfo?.address || '',
+    address: buildingInfo?.address || 'Plot 42, Bandra West, Mumbai',
     total_above_ground_floors: floors.length,
     total_underground_levels: underground.length > 0 ? 1 : 0,
-    sanctioned_height_m: buildingInfo?.total_height || 18.0,
+    sanctioned_height_m: buildingInfo?.total_height || 15.0,
     parcel_id: buildingInfo?.ulpin_prefix || 'MH-MUM-P001',
     floors,
     underground,
@@ -149,14 +150,29 @@ export async function fetchBuildingData(buildingId = 'B001') {
   }
 
   try {
-    // Fetch units and building info in parallel
-    const [unitsRes, buildingRes] = await Promise.all([
-      fetch(`${API_BASE_URL}/buildings/${buildingId}/units`),
-      fetch(`${API_BASE_URL}/buildings/${buildingId}`).catch(() => null),
-    ]);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-    if (!unitsRes.ok) {
-      throw new Error(`HTTP ${unitsRes.status}: ${unitsRes.statusText}`);
+    // Try relative URL first (Vite proxy), fallback to direct 127.0.0.1
+    const endpoint = `/buildings/${buildingId}/units`;
+    let unitsRes;
+    try {
+      unitsRes = await fetch(endpoint, { signal: controller.signal });
+    } catch {
+      unitsRes = await fetch(`${API_BASE_URL}/buildings/${buildingId}/units`, { signal: controller.signal });
+    }
+
+    let buildingRes;
+    try {
+      buildingRes = await fetch(`/buildings/${buildingId}`, { signal: controller.signal }).catch(() => null);
+    } catch {
+      buildingRes = await fetch(`${API_BASE_URL}/buildings/${buildingId}`, { signal: controller.signal }).catch(() => null);
+    }
+
+    clearTimeout(timeoutId);
+
+    if (!unitsRes || !unitsRes.ok) {
+      throw new Error(`HTTP ${unitsRes?.status || 'Offline'}`);
     }
 
     const units = await unitsRes.json();
@@ -174,7 +190,6 @@ export async function fetchBuildingData(buildingId = 'B001') {
 
 /**
  * Helper to get all available building IDs.
- * When using real API, we only have B001 seeded.
  */
 export function getAvailableBuildings() {
   if (USE_MOCK_DATA) {
@@ -185,7 +200,6 @@ export function getAvailableBuildings() {
     }));
   }
 
-  // Backend currently has one seeded building
   return [
     { id: 'B001', name: 'Bandra Heights (Parcel P001)', city: 'Mumbai, Maharashtra' },
   ];

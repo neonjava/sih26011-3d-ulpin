@@ -5,11 +5,13 @@ import SidebarPanel from './components/SidebarPanel';
 import ControlsDock from './components/ControlsDock';
 import ContractSpecsModal from './components/ContractSpecsModal';
 import { fetchBuildingData, getAvailableBuildings, USE_MOCK_DATA } from './services/api';
+import { MOCK_BUILDING_DATA } from './data/mockBuildingData';
 
 export default function App() {
   const [selectedBuildingId, setSelectedBuildingId] = useState('B001');
-  const [buildingData, setBuildingData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Initialize with fallback so 3D Canvas mounts immediately with zero layout lag
+  const [buildingData, setBuildingData] = useState(() => MOCK_BUILDING_DATA['B001']);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   // Interactive 3D States
@@ -34,19 +36,14 @@ export default function App() {
   useEffect(() => {
     let isMounted = true;
     async function loadData() {
-      setLoading(true);
-      setError(null);
       try {
         const data = await fetchBuildingData(selectedBuildingId);
-        if (isMounted) {
+        if (isMounted && data) {
           setBuildingData(data);
-          setSelectedUnit(null);
-          setLoading(false);
         }
       } catch (err) {
         if (isMounted) {
-          setError(err.message);
-          setLoading(false);
+          console.warn('[3D-ULPIN] Fetch error:', err.message);
         }
       }
     }
@@ -84,7 +81,7 @@ export default function App() {
 
   // 3. Compute Unit Counts for Quick Filters
   const unitCounts = useMemo(() => {
-    if (!buildingData) return { total: 0, residential: 0, parking: 0, utility: 0 };
+    if (!buildingData) return { total: 0, residential: 0, commercial: 0, parking: 0, utility: 0 };
     const aboveGroundUnits = buildingData.floors?.flatMap((f) => f.units || []) || [];
     const undergroundUnits = buildingData.underground || [];
     const all = [...aboveGroundUnits, ...undergroundUnits];
@@ -92,6 +89,7 @@ export default function App() {
     return {
       total: all.length,
       residential: all.filter((u) => (u.type || '').toLowerCase() === 'residential').length,
+      commercial: all.filter((u) => (u.type || '').toLowerCase() === 'commercial').length,
       parking: all.filter((u) => (u.type || '').toLowerCase() === 'parking').length,
       utility: all.filter((u) => (u.type || '').toLowerCase() === 'utility').length
     };
@@ -116,65 +114,39 @@ export default function App() {
       <main className="flex-1 flex relative overflow-hidden h-[calc(100vh-6.5rem)]">
         
         {/* 3D WebGL Canvas & Overlay Controls */}
-        <div className="flex-1 relative h-full bg-slate-50">
-          
-          {loading ? (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 space-y-3">
-              <div className="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-xs font-semibold text-slate-600">
-                Loading 3D Cadastre Building Model...
-              </p>
-            </div>
-          ) : error ? (
-            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3">
-              <div className="p-3 rounded-full bg-rose-100 text-rose-600 text-sm font-bold">
-                ⚠️ Failed to load building data
-              </div>
-              <p className="text-xs text-slate-500 max-w-sm">{error}</p>
-              <button
-                onClick={() => setSelectedBuildingId('B001')}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold"
-              >
-                Retry B001
-              </button>
-            </div>
-          ) : (
-            <>
-              {/* Three.js Scene Viewport */}
-              <Building3DScene
-                buildingData={buildingData}
-                selectedUnit={selectedUnit}
-                onSelectUnit={handleSelectUnit}
-                showUnderground={showUnderground}
-                explosionFactor={explosionFactor}
-                filterType={filterType}
-                searchQuery={searchQuery}
-                cameraTrigger={cameraTrigger}
-              />
+        <div className="flex-1 relative h-full bg-slate-50 min-h-0 min-w-0">
+          {/* Three.js Scene Viewport */}
+          <Building3DScene
+            buildingData={buildingData}
+            selectedUnit={selectedUnit}
+            onSelectUnit={handleSelectUnit}
+            showUnderground={showUnderground}
+            explosionFactor={explosionFactor}
+            filterType={filterType}
+            searchQuery={searchQuery}
+            cameraTrigger={cameraTrigger}
+          />
 
-              {/* Floating Controls Dock (Search, Filters, Explode Slider, Camera, Underground Toggle) */}
-              <ControlsDock
-                showUnderground={showUnderground}
-                onToggleUnderground={() => {
-                  setShowUnderground(!showUnderground);
-                  showToast(
-                    !showUnderground ? 'Underground Layer Enabled' : 'Underground Layer Hidden',
-                    !showUnderground ? 'Subsurface parking & utility level is now visible.' : 'Subsurface level hidden.',
-                    'info'
-                  );
-                }}
-                explosionFactor={explosionFactor}
-                onChangeExplosion={setExplosionFactor}
-                filterType={filterType}
-                onSelectFilter={setFilterType}
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                onTriggerCamera={handleCameraPreset}
-                unitCounts={unitCounts}
-              />
-            </>
-          )}
-
+          {/* Floating Controls Dock (Search, Filters, Explode Slider, Camera, Underground Toggle) */}
+          <ControlsDock
+            showUnderground={showUnderground}
+            onToggleUnderground={() => {
+              setShowUnderground(!showUnderground);
+              showToast(
+                !showUnderground ? 'Underground Layer Enabled' : 'Underground Layer Hidden',
+                !showUnderground ? 'Subsurface parking & utility level is now visible.' : 'Subsurface level hidden.',
+                'info'
+              );
+            }}
+            explosionFactor={explosionFactor}
+            onChangeExplosion={setExplosionFactor}
+            filterType={filterType}
+            onSelectFilter={setFilterType}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onTriggerCamera={handleCameraPreset}
+            unitCounts={unitCounts}
+          />
         </div>
 
         {/* Right Slide-over / Sidebar Panel */}
