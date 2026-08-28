@@ -1,59 +1,66 @@
 """
-SIH26011: 3D ULPIN Generation & Vertical Property Mapping System
-Production-grade FastAPI Backend Engine.
+3D ULPIN API — FastAPI Application
+
+Backend for the 3D Unique Land Parcel Identification Number system.
+Provides REST API for managing parcels, buildings, units, and topology validation.
 """
+
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import cadastre, verify_loan, deed_parser, simulation
-from app.db.mock_db import cadastre_db
+
+from app.api.routes import root_router, api_router
+from app.data.seed import seed_demo_data
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Seed demo data on startup."""
+    seed_demo_data()
+    yield
+
 
 app = FastAPI(
-    title="3D ULPIN Cadastre & Vertical Property Anti-Fraud Engine",
+    title="3D ULPIN API",
     description=(
-        "ISO 19152 LADM Compliant 3D Cadastral Generation, Volumetric Mortgage Clash Detection, "
-        "and Indian Deed OCR Parsing System."
+        "3D Unique Land Parcel Identification Number system — "
+        "volumetric cadastre with topology validation for SIH26011."
     ),
-    version="1.0.0",
+    version="2.0.0",
+    lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
 )
 
-# CORS Middleware for WebGL & Frontend Dashboards
+# CORS — allow frontend dev servers and wildcard for hackathon
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+        "*",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register API Routers under /api
-app.include_router(cadastre.router, prefix="/api")
-app.include_router(verify_loan.router, prefix="/api")
-app.include_router(deed_parser.router, prefix="/api")
-app.include_router(simulation.router, prefix="/api")
+# Mount routers
+app.include_router(root_router)
+app.include_router(api_router)
 
 
-@app.get("/", tags=["Health & Status"])
+@app.get("/", tags=["Root"])
 def root():
+    """Root endpoint with project info."""
     return {
-        "project": "SIH26011: 3D ULPIN Cadastre & Vertical Property Mapping",
-        "status": "OPERATIONAL",
-        "standard": "ISO 19152 LADM & Indian Bhu-Aadhaar 3D Cadastre",
-        "version": "1.0.0",
+        "project": "3D ULPIN — Volumetric Cadastre System (SIH26011)",
+        "version": "2.0.0",
         "docs": "/docs",
-    }
-
-
-@app.get("/health", tags=["Health & Status"])
-@app.get("/api/health", tags=["Health & Status"])
-def health_check():
-    return {
-        "status": "healthy",
-        "parcels_loaded": len(cadastre_db.get_all_parcels()),
-        "buildings_loaded": len(cadastre_db.get_all_buildings()),
-        "spatial_units_count": len(cadastre_db.get_all_units()),
+        "status": "operational",
     }
 
 

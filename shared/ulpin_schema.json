@@ -1,0 +1,58 @@
+{
+  "valid_state_codes": [
+    "MH",
+    "KA",
+    "DL",
+    "TN",
+    "UP",
+    "GJ",
+    "RJ",
+    "WB",
+    "AP",
+    "TS"
+  ],
+  "fields": {
+    "state": {
+      "name": "State",
+      "max_length": 2,
+      "pattern": "^[A-Z]{2}$",
+      "description": "2-letter state code"
+    },
+    "district": {
+      "name": "District",
+      "max_length": 3,
+      "pattern": "^[A-Z]{3}$",
+      "description": "3-letter district code"
+    },
+    "parcel_id": {
+      "name": "Parcel ID",
+      "max_length": 4,
+      "pattern": "^P\\d{3}$",
+      "description": "Parcel ID starting with P"
+    },
+    "building_id": {
+      "name": "Building ID",
+      "max_length": 4,
+      "pattern": "^B\\d{3}$",
+      "description": "Building ID starting with B"
+    },
+    "floor_no": {
+      "name": "Floor Number",
+      "max_length": 4,
+      "pattern": "^(GF|F\\d{2}|BF\\d{2})$",
+      "description": "Floor encoding (GF, F01-F99, BF01-BF10)"
+    },
+    "unit_no": {
+      "name": "Unit Number",
+      "max_length": 4,
+      "pattern": "^U\\d{2,3}$",
+      "description": "Unit number starting with U"
+    },
+    "z_range": {
+      "name": "Z Range",
+      "max_length": 20,
+      "pattern": "^(n?\\d+\\.\\d+)_(n?\\d+\\.\\d+)$",
+      "description": "Z-range in format min_max with 'n' for negative"
+    }
+  }
+}
