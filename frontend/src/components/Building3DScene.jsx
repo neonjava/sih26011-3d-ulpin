@@ -42,7 +42,8 @@ export default function Building3DScene({
   explosionFactor = 0.0,
   filterType = 'ALL',
   searchQuery = '',
-  cameraTrigger
+  cameraTrigger,
+  violatingUlpins = []
 }) {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
@@ -77,12 +78,14 @@ export default function Building3DScene({
 
     const unitBoxGeom = new THREE.BoxGeometry(uWidth, uHeight, uDepth);
 
+    const isViolating = violatingUlpins.includes(unit.ulpin);
+
     const unitMat = new THREE.MeshStandardMaterial({
-      color: typeConfig.base,
-      emissive: typeConfig.emissive,
-      emissiveIntensity: 0.08,
+      color: isViolating ? 0xef4444 : typeConfig.base,
+      emissive: isViolating ? 0xdc2626 : typeConfig.emissive,
+      emissiveIntensity: isViolating ? 0.7 : 0.08,
       transparent: true,
-      opacity: floorNo < 0 ? 0.85 : 0.78,
+      opacity: isViolating ? 0.92 : (floorNo < 0 ? 0.85 : 0.78),
       roughness: 0.25,
       metalness: 0.15
     });
@@ -95,7 +98,7 @@ export default function Building3DScene({
     // Unit Edge Wireframe for Sharp Architectural Definition
     const unitEdges = new THREE.EdgesGeometry(unitBoxGeom);
     const edgeMat = new THREE.LineBasicMaterial({
-      color: typeConfig.edge,
+      color: isViolating ? 0xffffff : typeConfig.edge,
       linewidth: 1.5,
       transparent: true,
       opacity: 0.95
@@ -110,7 +113,9 @@ export default function Building3DScene({
       typeConfig,
       originalColor: typeConfig.base,
       originalEmissive: typeConfig.emissive,
-      isSelected: false
+      originalEdgeColor: typeConfig.edge,
+      isSelected: false,
+      isViolating: isViolating
     };
 
     return unitMesh;
@@ -233,7 +238,7 @@ export default function Building3DScene({
       ugGroup.visible = showUnderground;
       scene.add(ugGroup);
     }
-  }, [showUnderground]);
+  }, [showUnderground, violatingUlpins]);
 
   // Helper: Build Clean Ground Surface and Cadastral Boundary
   function buildGround(scene) {
@@ -412,12 +417,21 @@ export default function Building3DScene({
       animationFrameRef.current = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Subtle pulse effect for selected unit
+      // Flashing pulse effect for violating/conflicted units and selected units
       unitMeshesMapRef.current.forEach((mesh) => {
-        if (mesh.userData?.isSelected) {
-          const pulse = (Math.sin(elapsedTime * 4) + 1) / 2;
+        const isViolating = mesh.userData?.isViolating;
+        const isSelected = mesh.userData?.isSelected;
+
+        if (isViolating) {
+          // Energetic red warning pulse for spatial topology clash
+          const clashPulse = (Math.sin(elapsedTime * 6) + 1) / 2;
           if (mesh.material && mesh.material.emissive) {
-            mesh.material.emissiveIntensity = 0.5 + pulse * 0.5;
+            mesh.material.emissiveIntensity = 0.4 + clashPulse * 0.7;
+          }
+        } else if (isSelected) {
+          const selectPulse = (Math.sin(elapsedTime * 4) + 1) / 2;
+          if (mesh.material && mesh.material.emissive) {
+            mesh.material.emissiveIntensity = 0.5 + selectPulse * 0.5;
           }
         }
       });
@@ -445,7 +459,29 @@ export default function Building3DScene({
     }
   }, [buildingData, buildBuilding]);
 
-  // 3. Handle Exploded Floor View Slider
+  // 3. Handle Violating ULPINs (Topology Check Highlights)
+  useEffect(() => {
+    unitMeshesMapRef.current.forEach((mesh, ulpin) => {
+      const isViolating = violatingUlpins.includes(ulpin);
+      mesh.userData.isViolating = isViolating;
+
+      if (mesh.material) {
+        if (isViolating) {
+          mesh.material.color.setHex(0xef4444); // Bold Red
+          mesh.material.emissive.setHex(0xdc2626);
+          mesh.material.emissiveIntensity = 0.8;
+          mesh.material.opacity = 0.92;
+        } else {
+          mesh.material.color.setHex(mesh.userData.originalColor);
+          mesh.material.emissive.setHex(mesh.userData.originalEmissive);
+          mesh.material.emissiveIntensity = mesh.userData.isSelected ? 0.6 : 0.08;
+          mesh.material.opacity = mesh.userData.floor_no < 0 ? 0.85 : 0.78;
+        }
+      }
+    });
+  }, [violatingUlpins]);
+
+  // 4. Handle Exploded Floor View Slider
   useEffect(() => {
     floorGroupsMapRef.current.forEach((group, floorNo) => {
       const baseElev = group.userData.baseElevation;
@@ -461,7 +497,7 @@ export default function Building3DScene({
     }
   }, [explosionFactor]);
 
-  // 4. Handle Show/Hide Underground Toggle
+  // 5. Handle Show/Hide Underground Toggle
   useEffect(() => {
     if (undergroundGroupRef.current) {
       undergroundGroupRef.current.visible = showUnderground;
@@ -475,13 +511,13 @@ export default function Building3DScene({
     }
   }, [showUnderground]);
 
-  // 5. Handle Selection Highlighting & Pulse
+  // 6. Handle Selection Highlighting & Pulse
   useEffect(() => {
     unitMeshesMapRef.current.forEach((mesh, ulpin) => {
       const isCurrentSelected = selectedUnit && selectedUnit.ulpin === ulpin;
       mesh.userData.isSelected = isCurrentSelected;
 
-      if (mesh.material) {
+      if (mesh.material && !mesh.userData.isViolating) {
         if (isCurrentSelected) {
           mesh.material.opacity = 0.95;
           mesh.material.emissiveIntensity = 0.6;
@@ -493,7 +529,7 @@ export default function Building3DScene({
     });
   }, [selectedUnit]);
 
-  // 6. Handle Type Filtering & Search Highlight
+  // 7. Handle Type Filtering & Search Highlight
   useEffect(() => {
     unitMeshesMapRef.current.forEach((mesh) => {
       const unitType = (mesh.userData.type || 'residential').toLowerCase();
@@ -510,14 +546,14 @@ export default function Building3DScene({
 
       const isDimmed = !matchesFilter || !matchesSearch;
 
-      if (mesh.material) {
+      if (mesh.material && !mesh.userData.isViolating) {
         mesh.material.opacity = isDimmed ? 0.15 : (mesh.userData.floor_no < 0 ? 0.85 : 0.78);
         mesh.material.transparent = true;
       }
     });
   }, [filterType, searchQuery]);
 
-  // 7. Handle Camera Presets & Focus Trigger
+  // 8. Handle Camera Presets & Focus Trigger
   useEffect(() => {
     if (!cameraTrigger || !cameraRef.current || !controlsRef.current) return;
     const { mode, targetUnit } = cameraTrigger;
@@ -546,7 +582,7 @@ export default function Building3DScene({
     controlsRef.current.update();
   }, [cameraTrigger]);
 
-  // 8. Raycasting: Mouse Hover Handler
+  // 9. Raycasting: Mouse Hover Handler
   const handlePointerMove = useCallback((e) => {
     if (!mountRef.current || !cameraRef.current || !sceneRef.current) return;
     const rect = mountRef.current.getBoundingClientRect();
@@ -565,11 +601,11 @@ export default function Building3DScene({
       const hitMesh = intersects[0].object;
       if (hoveredMeshRef.current !== hitMesh) {
         // Reset old hovered mesh
-        if (hoveredMeshRef.current && !hoveredMeshRef.current.userData.isSelected) {
+        if (hoveredMeshRef.current && !hoveredMeshRef.current.userData.isSelected && !hoveredMeshRef.current.userData.isViolating) {
           hoveredMeshRef.current.material.emissiveIntensity = 0.08;
         }
         hoveredMeshRef.current = hitMesh;
-        if (!hitMesh.userData.isSelected) {
+        if (!hitMesh.userData.isSelected && !hitMesh.userData.isViolating) {
           hitMesh.material.emissiveIntensity = 0.35;
         }
       }
@@ -581,7 +617,7 @@ export default function Building3DScene({
         visible: true
       });
     } else {
-      if (hoveredMeshRef.current && !hoveredMeshRef.current.userData.isSelected) {
+      if (hoveredMeshRef.current && !hoveredMeshRef.current.userData.isSelected && !hoveredMeshRef.current.userData.isViolating) {
         hoveredMeshRef.current.material.emissiveIntensity = 0.08;
       }
       hoveredMeshRef.current = null;
@@ -590,7 +626,7 @@ export default function Building3DScene({
     }
   }, []);
 
-  // 9. Raycasting: Mouse Click Handler
+  // 10. Raycasting: Mouse Click Handler
   const handlePointerClick = useCallback(
     (e) => {
       if (!mountRef.current || !cameraRef.current) return;
@@ -626,7 +662,11 @@ export default function Building3DScene({
       {tooltipPos.visible && hoveredUnitData && (
         <div
           style={{ left: `${tooltipPos.x}px`, top: `${tooltipPos.y}px` }}
-          className="absolute z-30 pointer-events-none bg-slate-900/95 backdrop-blur-md text-white shadow-xl rounded-xl px-3.5 py-2.5 text-xs border border-slate-700 max-w-xs transition-opacity duration-150 animate-in fade-in zoom-in-95"
+          className={`absolute z-30 pointer-events-none text-white shadow-2xl rounded-xl px-3.5 py-2.5 text-xs border max-w-xs transition-opacity duration-150 animate-in fade-in zoom-in-95 ${
+            hoveredUnitData.isViolating
+              ? 'bg-rose-950/95 border-rose-500 ring-2 ring-rose-500/50'
+              : 'bg-slate-900/95 backdrop-blur-md border-slate-700'
+          }`}
         >
           <div className="flex items-center justify-between gap-3">
             <span className="font-bold text-slate-100 text-sm">
@@ -634,7 +674,9 @@ export default function Building3DScene({
             </span>
             <span
               className={`text-[10px] px-2 py-0.5 rounded font-bold uppercase ${
-                hoveredUnitData.type === 'residential'
+                hoveredUnitData.isViolating
+                  ? 'bg-rose-500 text-white animate-pulse'
+                  : hoveredUnitData.type === 'residential'
                   ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
                   : hoveredUnitData.type === 'commercial'
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
@@ -643,9 +685,15 @@ export default function Building3DScene({
                   : 'bg-purple-500/20 text-purple-300 border border-purple-500/40'
               }`}
             >
-              {hoveredUnitData.type}
+              {hoveredUnitData.isViolating ? '⚠️ CLASH' : hoveredUnitData.type}
             </span>
           </div>
+
+          {hoveredUnitData.isViolating && (
+            <div className="mt-1 text-[11px] font-bold text-rose-300 bg-rose-900/80 p-1.5 rounded border border-rose-700/60">
+              🚨 3D Spatial Topology Conflict: Overlapping Unit Deed!
+            </div>
+          )}
 
           <div className="text-slate-300 text-[11px] mt-1.5 space-y-0.5">
             <div className="text-slate-400">
@@ -656,7 +704,7 @@ export default function Building3DScene({
             </div>
           </div>
           <div className="text-[9px] text-slate-400 mt-1 italic">
-            Click unit to open property record
+            Click unit to inspect volumetric record
           </div>
         </div>
       )}

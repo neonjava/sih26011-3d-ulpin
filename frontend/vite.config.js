@@ -22,6 +22,10 @@ export default defineConfig({
       '/units': {
         target: 'http://127.0.0.1:8000',
         changeOrigin: true
+      },
+      '/topology': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true
       }
     }
   }
