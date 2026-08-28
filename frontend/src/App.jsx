@@ -1,133 +1,209 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from './components/Navbar';
-import Cadastre3DViewer from './components/Cadastre3DViewer';
-import BankerPortal from './components/BankerPortal';
-import DocumentAIStudio from './components/DocumentAIStudio';
-import RegistrarAnalytics from './components/RegistrarAnalytics';
-import ArchitectureModal from './components/ArchitectureModal';
-import { PARCELS } from './data/mockCadastreData';
+import Building3DScene from './components/Building3DScene';
+import SidebarPanel from './components/SidebarPanel';
+import ControlsDock from './components/ControlsDock';
+import ContractSpecsModal from './components/ContractSpecsModal';
+import { fetchBuildingData, getAvailableBuildings, USE_MOCK_DATA } from './services/api';
 
 export default function App() {
-  const [parcels, setParcels] = useState(PARCELS);
-  const [selectedParcel, setSelectedParcel] = useState(PARCELS[0]);
-  const [activeTab, setActiveTab] = useState('digital-twin'); // 'digital-twin', 'banker-portal', 'document-ai', 'analytics'
+  const [selectedBuildingId, setSelectedBuildingId] = useState('B001');
+  const [buildingData, setBuildingData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Interactive 3D States
   const [selectedUnit, setSelectedUnit] = useState(null);
-  const [highlightConflictId, setHighlightConflictId] = useState(null);
-  const [isArchitectureOpen, setIsArchitectureOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState(null);
+  const [showUnderground, setShowUnderground] = useState(true);
+  const [explosionFactor, setExplosionFactor] = useState(0.0);
+  const [filterType, setFilterType] = useState('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [cameraTrigger, setCameraTrigger] = useState(null);
+  const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
+  const [toast, setToast] = useState(null);
 
+  const availableBuildings = useMemo(() => getAvailableBuildings(), []);
+
+  // Show Toast helper
   const showToast = (title, msg, type = 'info') => {
-    setToastMessage({ title, msg, type });
-    setTimeout(() => setToastMessage(null), 4000);
+    setToast({ title, msg, type });
+    setTimeout(() => setToast(null), 3500);
   };
 
-  const handleNavigateToBanker = (unit) => {
-    setSelectedUnit(unit);
-    setActiveTab('banker-portal');
-    showToast('Banker Portal Linked', `Selected unit ${unit.unitNumber} loaded for 3D CERSAI inquiry.`, 'success');
-  };
-
-  const handleNavigateToDeed = (unit) => {
-    setSelectedUnit(unit);
-    setActiveTab('document-ai');
-    showToast('Document AI Workbench', `Sale deed for ${unit.unitNumber} ready for inspection.`, 'info');
-  };
-
-  const handleNavigateTo3D = (target) => {
-    setActiveTab('digital-twin');
-    if (target) {
-      if (target.extractedData) {
-        const unitId = `MH-MUM-BND-1245-08-F${String(target.extractedData.floorNumber).padStart(2, '0')}-U${target.extractedData.floorNumber}02`;
-        setHighlightConflictId(unitId);
-        showToast('3D Voxel Extruded', `Target voxel for Flat ${target.extractedData.flatNumber} highlighted in 3D Twin.`, 'success');
-      } else {
-        const unitId = target.id || target.unitId;
-        setHighlightConflictId(unitId);
-        setSelectedUnit(target);
-        showToast('3D Spatial Target Locked', `Inspecting ${target.unitNumber || target.title} in 3D digital twin.`, 'info');
+  // 1. Fetch Building Data on Mount or Building Change
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await fetchBuildingData(selectedBuildingId);
+        if (isMounted) {
+          setBuildingData(data);
+          setSelectedUnit(null);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message);
+          setLoading(false);
+        }
       }
+    }
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedBuildingId]);
+
+  // 2. Unit Selection Handlers
+  const handleSelectUnit = (unit) => {
+    setSelectedUnit(unit);
+    if (unit) {
+      showToast(
+        `${unit.unit_number || 'Unit Selected'}`,
+        `ULPIN: ${unit.ulpin} • Owner: ${unit.owner}`,
+        'info'
+      );
     }
   };
 
-  const handleExtrudeSuccess = (deed) => {
-    showToast('3D-ULPIN Minted!', `Successfully minted ${deed.extractedData.generatedUlpin3D} under ISO 19152 standard.`, 'success');
+  const handleFocusUnit = (unit) => {
+    setCameraTrigger({ mode: 'FOCUS_UNIT', targetUnit: unit, timestamp: Date.now() });
+    showToast('Camera Focused', `Centered view on ${unit.unit_number || 'target unit'}.`, 'info');
   };
 
+  const handleResetCamera = () => {
+    setCameraTrigger({ mode: 'RESET', timestamp: Date.now() });
+    showToast('Camera Reset', 'Returned to default 3D orbit angle.', 'info');
+  };
+
+  const handleCameraPreset = ({ mode }) => {
+    setCameraTrigger({ mode, timestamp: Date.now() });
+  };
+
+  // 3. Compute Unit Counts for Quick Filters
+  const unitCounts = useMemo(() => {
+    if (!buildingData) return { total: 0, residential: 0, parking: 0, utility: 0 };
+    const aboveGroundUnits = buildingData.floors?.flatMap((f) => f.units || []) || [];
+    const undergroundUnits = buildingData.underground || [];
+    const all = [...aboveGroundUnits, ...undergroundUnits];
+
+    return {
+      total: all.length,
+      residential: all.filter((u) => (u.type || '').toLowerCase() === 'residential').length,
+      parking: all.filter((u) => (u.type || '').toLowerCase() === 'parking').length,
+      utility: all.filter((u) => (u.type || '').toLowerCase() === 'utility').length
+    };
+  }, [buildingData]);
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-100 text-slate-900 font-sans antialiased overflow-hidden">
       
-      {/* Official Government & System Navbar */}
+      {/* Top Navbar with Building Selector & Mock Data Indicator */}
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        onOpenArchitecture={() => setIsArchitectureOpen(true)}
-        selectedParcel={selectedParcel}
-        parcels={parcels}
-        onSelectParcel={(p) => {
-          setSelectedParcel(p);
-          setSelectedUnit(null);
-          setHighlightConflictId(null);
-          showToast('Cadastre Parcel Changed', `Switched view to ${p.property_name} (${p.city}).`, 'info');
+        selectedBuildingId={selectedBuildingId}
+        onSelectBuilding={(id) => {
+          setSelectedBuildingId(id);
+          showToast('Building Changed', `Switched to Building ${id}.`, 'info');
         }}
+        availableBuildings={availableBuildings}
+        onResetView={handleResetCamera}
+        onOpenSpecsModal={() => setIsSpecsModalOpen(true)}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      {/* Main 3D Workspace */}
+      <main className="flex-1 flex relative overflow-hidden h-[calc(100vh-6.5rem)]">
         
-        {/* Dynamic Tab Views */}
-        {activeTab === 'digital-twin' && (
-          <div className="space-y-4">
-            <Cadastre3DViewer
-              parcel={selectedParcel}
-              selectedUnit={selectedUnit}
-              onSelectUnit={setSelectedUnit}
-              onNavigateToBanker={handleNavigateToBanker}
-              onNavigateToDeed={handleNavigateToDeed}
-              highlightConflictId={highlightConflictId}
-            />
-          </div>
-        )}
+        {/* 3D WebGL Canvas & Overlay Controls */}
+        <div className="flex-1 relative h-full bg-slate-50">
+          
+          {loading ? (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 space-y-3">
+              <div className="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-xs font-semibold text-slate-600">
+                Loading 3D Cadastre Building Model...
+              </p>
+            </div>
+          ) : error ? (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3">
+              <div className="p-3 rounded-full bg-rose-100 text-rose-600 text-sm font-bold">
+                ⚠️ Failed to load building data
+              </div>
+              <p className="text-xs text-slate-500 max-w-sm">{error}</p>
+              <button
+                onClick={() => setSelectedBuildingId('B001')}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold"
+              >
+                Retry B001
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Three.js Scene Viewport */}
+              <Building3DScene
+                buildingData={buildingData}
+                selectedUnit={selectedUnit}
+                onSelectUnit={handleSelectUnit}
+                showUnderground={showUnderground}
+                explosionFactor={explosionFactor}
+                filterType={filterType}
+                searchQuery={searchQuery}
+                cameraTrigger={cameraTrigger}
+              />
 
-        {activeTab === 'banker-portal' && (
-          <BankerPortal 
-            onNavigateTo3D={handleNavigateTo3D}
-            activeParcel={selectedParcel}
-          />
-        )}
+              {/* Floating Controls Dock (Search, Filters, Explode Slider, Camera, Underground Toggle) */}
+              <ControlsDock
+                showUnderground={showUnderground}
+                onToggleUnderground={() => {
+                  setShowUnderground(!showUnderground);
+                  showToast(
+                    !showUnderground ? 'Underground Layer Enabled' : 'Underground Layer Hidden',
+                    !showUnderground ? 'Subsurface parking & utility level is now visible.' : 'Subsurface level hidden.',
+                    'info'
+                  );
+                }}
+                explosionFactor={explosionFactor}
+                onChangeExplosion={setExplosionFactor}
+                filterType={filterType}
+                onSelectFilter={setFilterType}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                onTriggerCamera={handleCameraPreset}
+                unitCounts={unitCounts}
+              />
+            </>
+          )}
 
-        {activeTab === 'document-ai' && (
-          <DocumentAIStudio 
-            onExtrudeSuccess={handleExtrudeSuccess}
-            onNavigateTo3D={handleNavigateTo3D}
-          />
-        )}
+        </div>
 
-        {activeTab === 'analytics' && (
-          <RegistrarAnalytics />
-        )}
+        {/* Right Slide-over / Sidebar Panel */}
+        <SidebarPanel
+          selectedUnit={selectedUnit}
+          onClose={() => setSelectedUnit(null)}
+          buildingData={buildingData}
+          onFocusUnit={handleFocusUnit}
+        />
 
       </main>
 
-      {/* Toast Notification (Clean Light Theme) */}
-      {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 animate-bounce">
-          <div className={`p-4 rounded-xl border shadow-lg text-xs flex items-center gap-3 ${
-            toastMessage.type === 'success' 
-              ? 'bg-emerald-50 border-emerald-300 text-emerald-900' 
-              : 'bg-blue-50 border-blue-300 text-blue-900'
-          }`}>
+      {/* Floating Toast Notification */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-3 duration-200">
+          <div className="bg-slate-900/95 backdrop-blur-md text-white px-4 py-3 rounded-xl border border-slate-700 shadow-2xl text-xs flex items-center gap-3 max-w-sm">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
             <div>
-              <div className="font-bold">{toastMessage.title}</div>
-              <div className="text-[11px] opacity-80 mt-0.5">{toastMessage.msg}</div>
+              <div className="font-bold text-slate-100">{toast.title}</div>
+              <div className="text-[11px] text-slate-300 mt-0.5">{toast.msg}</div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Architecture Specs Modal */}
-      <ArchitectureModal 
-        isOpen={isArchitectureOpen}
-        onClose={() => setIsArchitectureOpen(false)}
+      {/* Contract & API Swap Guide Modal */}
+      <ContractSpecsModal
+        isOpen={isSpecsModalOpen}
+        onClose={() => setIsSpecsModalOpen(false)}
       />
 
     </div>
