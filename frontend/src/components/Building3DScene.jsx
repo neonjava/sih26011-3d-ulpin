@@ -43,7 +43,9 @@ export default function Building3DScene({
   filterType = 'ALL',
   searchQuery = '',
   cameraTrigger,
-  violatingUlpins = []
+  violatingUlpins = [],
+  viewMode = '3D',
+  isDroneScanning = false
 }) {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
@@ -58,6 +60,8 @@ export default function Building3DScene({
   const floorGroupsMapRef = useRef(new Map()); // floor_no -> Group
   const undergroundGroupRef = useRef(null);
   const groundGroupRef = useRef(null);
+  const legacy2DGroupRef = useRef(null);
+  const buildingRootGroupRef = useRef(null);
 
   // Raycasting & Interaction
   const raycasterRef = useRef(new THREE.Raycaster());
@@ -77,7 +81,6 @@ export default function Building3DScene({
     const uDepth = Math.max(geom.depth || 7.2, 1);
 
     const unitBoxGeom = new THREE.BoxGeometry(uWidth, uHeight, uDepth);
-
     const isViolating = violatingUlpins.includes(unit.ulpin);
 
     const unitMat = new THREE.MeshStandardMaterial({
@@ -121,19 +124,28 @@ export default function Building3DScene({
     return unitMesh;
   }
 
-  // Helper: Build Building 3D Meshes from buildingData
+  // Helper: Build Clean Ground Surface, 2D Legacy Footprints & 3D Building Meshes
   const buildBuilding = useCallback((scene, data) => {
     if (!scene || !data) return;
 
-    // Clear previous floor groups & meshes
-    floorGroupsMapRef.current.forEach((group) => scene.remove(group));
+    // Remove existing building root group if present
+    if (buildingRootGroupRef.current) {
+      scene.remove(buildingRootGroupRef.current);
+    }
+    const buildingRoot = new THREE.Group();
+    buildingRoot.name = 'BuildingRoot';
+    buildingRootGroupRef.current = buildingRoot;
+
+    // Remove existing 2D legacy group
+    if (legacy2DGroupRef.current) {
+      scene.remove(legacy2DGroupRef.current);
+    }
+    const legacy2DGroup = new THREE.Group();
+    legacy2DGroup.name = 'Legacy2DGroup';
+    legacy2DGroupRef.current = legacy2DGroup;
+
     floorGroupsMapRef.current.clear();
     unitMeshesMapRef.current.clear();
-
-    if (undergroundGroupRef.current) {
-      scene.remove(undergroundGroupRef.current);
-      undergroundGroupRef.current = null;
-    }
 
     const slabThickness = 0.3;
     const slabSize = 16.5;
@@ -189,7 +201,7 @@ export default function Building3DScene({
       const baseY = (floorNo - 1) * 3.0;
       floorGroup.position.set(0, baseY, 0);
       floorGroupsMapRef.current.set(floorNo, floorGroup);
-      scene.add(floorGroup);
+      buildingRoot.add(floorGroup);
     });
 
     // --- B. Build Underground Level (B1) ---
@@ -236,11 +248,62 @@ export default function Building3DScene({
 
       ugGroup.position.set(0, -3.0, 0);
       ugGroup.visible = showUnderground;
-      scene.add(ugGroup);
+      buildingRoot.add(ugGroup);
     }
-  }, [showUnderground, violatingUlpins]);
 
-  // Helper: Build Clean Ground Surface and Cadastral Boundary
+    // --- C. Build 2D Legacy Cadastre Footprint Map (for 2D Mode) ---
+    const parcelFootprintGeom = new THREE.PlaneGeometry(18, 18);
+    const parcelFootprintMat = new THREE.MeshStandardMaterial({
+      color: 0xe0f2fe, // Light Sky Blue 2D Parcel Tint
+      roughness: 0.9,
+      metalness: 0.0,
+      side: THREE.DoubleSide
+    });
+    const parcelFootprint = new THREE.Mesh(parcelFootprintGeom, parcelFootprintMat);
+    parcelFootprint.rotation.x = -Math.PI / 2;
+    parcelFootprint.position.y = 0.03;
+    parcelFootprint.receiveShadow = true;
+    legacy2DGroup.add(parcelFootprint);
+
+    // 2D Unit Footprint Subdivisions on Ground
+    const floor1Units = data.floors?.[0]?.units || [];
+    floor1Units.forEach((unit, idx) => {
+      const geom = unit.geometry || {
+        x: idx === 0 ? -3.8 : (idx === 1 ? 3.8 : 0.0),
+        z: idx === 2 ? 3.8 : -3.8,
+        width: idx === 2 ? 14.8 : 7.2,
+        depth: 7.2
+      };
+
+      const unitPlaneGeom = new THREE.PlaneGeometry(geom.width - 0.2, geom.depth - 0.2);
+      const unitPlaneMat = new THREE.MeshBasicMaterial({
+        color: idx === 0 ? 0xbae6fd : (idx === 1 ? 0xa7f3d0 : 0xfde68a),
+        side: THREE.DoubleSide
+      });
+      const unitPlane = new THREE.Mesh(unitPlaneGeom, unitPlaneMat);
+      unitPlane.rotation.x = -Math.PI / 2;
+      unitPlane.position.set(geom.x || 0, 0.04, geom.z || 0);
+      legacy2DGroup.add(unitPlane);
+
+      // Unit 2D Edge Outline
+      const unitEdgeGeom = new THREE.EdgesGeometry(new THREE.BoxGeometry(geom.width - 0.2, 0.01, geom.depth - 0.2));
+      const unitEdgeMat = new THREE.LineBasicMaterial({ color: 0x0284c7, linewidth: 2 });
+      const unitEdgeLine = new THREE.LineSegments(unitEdgeGeom, unitEdgeMat);
+      unitEdgeLine.position.set(geom.x || 0, 0.05, geom.z || 0);
+      legacy2DGroup.add(unitEdgeLine);
+    });
+
+    // Add Groups to Scene
+    scene.add(buildingRoot);
+    scene.add(legacy2DGroup);
+
+    // Set initial visibility according to viewMode
+    buildingRoot.visible = viewMode === '3D' && !isDroneScanning;
+    legacy2DGroup.visible = viewMode === '2D' && !isDroneScanning;
+
+  }, [showUnderground, violatingUlpins, viewMode, isDroneScanning]);
+
+  // Helper: Build Clean Ground Surface and Cadastral Grid
   function buildGround(scene) {
     if (groundGroupRef.current) {
       scene.remove(groundGroupRef.current);
@@ -273,7 +336,7 @@ export default function Building3DScene({
     // 3. Cadastral Parcel Base Footprint Boundary (Clean Blue Polygon)
     const parcelBoundsGeom = new THREE.BoxGeometry(18, 0.08, 18);
     const parcelEdges = new THREE.EdgesGeometry(parcelBoundsGeom);
-    const parcelLineMat = new THREE.LineBasicMaterial({ color: 0x2563eb, linewidth: 2 });
+    const parcelLineMat = new THREE.LineBasicMaterial({ color: 0x2563eb, linewidth: 2.5 });
     const parcelLine = new THREE.LineSegments(parcelEdges, parcelLineMat);
     parcelLine.position.set(0, 0.04, 0);
     groundGroup.add(parcelLine);
@@ -423,7 +486,6 @@ export default function Building3DScene({
         const isSelected = mesh.userData?.isSelected;
 
         if (isViolating) {
-          // Energetic red warning pulse for spatial topology clash
           const clashPulse = (Math.sin(elapsedTime * 6) + 1) / 2;
           if (mesh.material && mesh.material.emissive) {
             mesh.material.emissiveIntensity = 0.4 + clashPulse * 0.7;
@@ -459,7 +521,29 @@ export default function Building3DScene({
     }
   }, [buildingData, buildBuilding]);
 
-  // 3. Handle Violating ULPINs (Topology Check Highlights)
+  // 3. Handle View Mode Switching (2D Legacy vs 3D Volumetric ULPIN) & Drone Scan State
+  useEffect(() => {
+    if (buildingRootGroupRef.current) {
+      buildingRootGroupRef.current.visible = viewMode === '3D' && !isDroneScanning;
+    }
+    if (legacy2DGroupRef.current) {
+      legacy2DGroupRef.current.visible = viewMode === '2D' && !isDroneScanning;
+    }
+
+    // Auto-adjust camera when entering 2D mode vs 3D mode
+    if (controlsRef.current && cameraRef.current && !isDroneScanning) {
+      if (viewMode === '2D') {
+        cameraRef.current.position.set(0, 36, 0.1);
+        controlsRef.current.target.set(0, 0, 0);
+      } else {
+        cameraRef.current.position.set(26, 20, 30);
+        controlsRef.current.target.set(0, 6.5, 0);
+      }
+      controlsRef.current.update();
+    }
+  }, [viewMode, isDroneScanning]);
+
+  // 4. Handle Violating ULPINs (Topology Check Highlights)
   useEffect(() => {
     unitMeshesMapRef.current.forEach((mesh, ulpin) => {
       const isViolating = violatingUlpins.includes(ulpin);
@@ -481,37 +565,34 @@ export default function Building3DScene({
     });
   }, [violatingUlpins]);
 
-  // 4. Handle Exploded Floor View Slider
+  // 5. Handle Exploded Floor View Slider
   useEffect(() => {
     floorGroupsMapRef.current.forEach((group, floorNo) => {
       const baseElev = group.userData.baseElevation;
-      // Expand upwards proportional to floor number
       const offset = (floorNo - 1) * explosionFactor * 3.5;
       group.position.y = baseElev + offset;
     });
 
     if (undergroundGroupRef.current) {
-      // Expand downwards for underground
       const offset = explosionFactor * 3.0;
       undergroundGroupRef.current.position.y = -3.0 - offset;
     }
   }, [explosionFactor]);
 
-  // 5. Handle Show/Hide Underground Toggle
+  // 6. Handle Show/Hide Underground Toggle
   useEffect(() => {
     if (undergroundGroupRef.current) {
-      undergroundGroupRef.current.visible = showUnderground;
+      undergroundGroupRef.current.visible = showUnderground && viewMode === '3D';
     }
-    // Make ground plane slightly more translucent when inspecting underground
     if (groundGroupRef.current) {
       const groundMesh = groundGroupRef.current.children[0];
       if (groundMesh && groundMesh.material) {
         groundMesh.material.opacity = showUnderground ? 0.65 : 0.95;
       }
     }
-  }, [showUnderground]);
+  }, [showUnderground, viewMode]);
 
-  // 6. Handle Selection Highlighting & Pulse
+  // 7. Handle Selection Highlighting & Pulse
   useEffect(() => {
     unitMeshesMapRef.current.forEach((mesh, ulpin) => {
       const isCurrentSelected = selectedUnit && selectedUnit.ulpin === ulpin;
@@ -529,7 +610,7 @@ export default function Building3DScene({
     });
   }, [selectedUnit]);
 
-  // 7. Handle Type Filtering & Search Highlight
+  // 8. Handle Type Filtering & Search Highlight
   useEffect(() => {
     unitMeshesMapRef.current.forEach((mesh) => {
       const unitType = (mesh.userData.type || 'residential').toLowerCase();
@@ -553,7 +634,7 @@ export default function Building3DScene({
     });
   }, [filterType, searchQuery]);
 
-  // 8. Handle Camera Presets & Focus Trigger
+  // 9. Handle Camera Presets & Focus Trigger
   useEffect(() => {
     if (!cameraTrigger || !cameraRef.current || !controlsRef.current) return;
     const { mode, targetUnit } = cameraTrigger;
@@ -582,9 +663,9 @@ export default function Building3DScene({
     controlsRef.current.update();
   }, [cameraTrigger]);
 
-  // 9. Raycasting: Mouse Hover Handler
+  // 10. Raycasting: Mouse Hover Handler
   const handlePointerMove = useCallback((e) => {
-    if (!mountRef.current || !cameraRef.current || !sceneRef.current) return;
+    if (!mountRef.current || !cameraRef.current || !sceneRef.current || isDroneScanning) return;
     const rect = mountRef.current.getBoundingClientRect();
     mouseRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
     mouseRef.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
@@ -593,14 +674,13 @@ export default function Building3DScene({
 
     // Raycast only against visible unit meshes
     const meshes = Array.from(unitMeshesMapRef.current.values()).filter(
-      (m) => m.parent && m.parent.visible
+      (m) => m.parent && m.parent.visible && m.parent.parent && m.parent.parent.visible
     );
     const intersects = raycasterRef.current.intersectObjects(meshes, false);
 
     if (intersects.length > 0) {
       const hitMesh = intersects[0].object;
       if (hoveredMeshRef.current !== hitMesh) {
-        // Reset old hovered mesh
         if (hoveredMeshRef.current && !hoveredMeshRef.current.userData.isSelected && !hoveredMeshRef.current.userData.isViolating) {
           hoveredMeshRef.current.material.emissiveIntensity = 0.08;
         }
@@ -624,19 +704,19 @@ export default function Building3DScene({
       setHoveredUnitData(null);
       setTooltipPos((prev) => ({ ...prev, visible: false }));
     }
-  }, []);
+  }, [isDroneScanning]);
 
-  // 10. Raycasting: Mouse Click Handler
+  // 11. Raycasting: Mouse Click Handler
   const handlePointerClick = useCallback(
     (e) => {
-      if (!mountRef.current || !cameraRef.current) return;
+      if (!mountRef.current || !cameraRef.current || isDroneScanning) return;
       const rect = mountRef.current.getBoundingClientRect();
       mouseRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       mouseRef.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
       raycasterRef.current.setFromCamera(mouseRef.current, cameraRef.current);
       const meshes = Array.from(unitMeshesMapRef.current.values()).filter(
-        (m) => m.parent && m.parent.visible
+        (m) => m.parent && m.parent.visible && m.parent.parent && m.parent.parent.visible
       );
       const intersects = raycasterRef.current.intersectObjects(meshes, false);
 
@@ -645,7 +725,7 @@ export default function Building3DScene({
         onSelectUnit(hit.userData);
       }
     },
-    [onSelectUnit]
+    [onSelectUnit, isDroneScanning]
   );
 
   return (
@@ -659,7 +739,7 @@ export default function Building3DScene({
       />
 
       {/* Dynamic Hover Tooltip */}
-      {tooltipPos.visible && hoveredUnitData && (
+      {tooltipPos.visible && hoveredUnitData && !isDroneScanning && (
         <div
           style={{ left: `${tooltipPos.x}px`, top: `${tooltipPos.y}px` }}
           className={`absolute z-30 pointer-events-none text-white shadow-2xl rounded-xl px-3.5 py-2.5 text-xs border max-w-xs transition-opacity duration-150 animate-in fade-in zoom-in-95 ${

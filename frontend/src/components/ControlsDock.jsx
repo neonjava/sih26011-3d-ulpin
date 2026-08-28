@@ -16,7 +16,9 @@ import {
   ShieldCheck,
   Sparkles,
   Flame,
-  AlertTriangle
+  AlertTriangle,
+  Radio,
+  Scan
 } from 'lucide-react';
 import { UNIT_COLORS } from './Building3DScene';
 
@@ -34,7 +36,11 @@ export default function ControlsDock({
   onRunTopologyCheck,
   isValidatingTopology = false,
   violatingUlpins = [],
-  onOpenTopologyModal
+  onOpenTopologyModal,
+  viewMode = '3D',
+  onChangeViewMode,
+  onSimulateDroneScan,
+  isDroneScanning = false
 }) {
   return (
     <>
@@ -131,8 +137,10 @@ export default function ControlsDock({
 
         <div className="bg-white/95 backdrop-blur-md border border-slate-200 shadow-md rounded-xl p-3 text-xs text-slate-700 space-y-1.5 min-w-[175px]">
           <div className="text-[11px] font-bold text-slate-800 border-b border-slate-100 pb-1 flex items-center justify-between">
-            <span>3D Cadastre Legend</span>
-            <span className="text-[9px] text-slate-400 font-mono">ISO 19152</span>
+            <span>Cadastre Legend</span>
+            <span className="text-[9px] text-slate-400 font-mono">
+              {viewMode === '2D' ? '2D Footprint' : '3D Volumetric'}
+            </span>
           </div>
           
           <div className="flex items-center gap-2">
@@ -167,52 +175,61 @@ export default function ControlsDock({
         {/* Row 1: Exploded View Slider, Underground Toggle & AI Topology Check Button */}
         <div className="flex flex-wrap items-center justify-between gap-2.5">
           
-          {/* Exploded Floor Slider */}
-          <div className="flex items-center gap-2 flex-1 min-w-[200px]">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 whitespace-nowrap">
-              <Layers className="w-4 h-4 text-blue-600" />
-              <span className="hidden sm:inline">Exploded View:</span>
-              <span className="sm:hidden">Explode:</span>
-              <span className="font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded text-[11px] border border-blue-200">
-                {explosionFactor.toFixed(1)}x
-              </span>
+          {/* Exploded Floor Slider (Visible in 3D Mode) */}
+          {viewMode === '3D' ? (
+            <div className="flex items-center gap-2 flex-1 min-w-[200px]">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 whitespace-nowrap">
+                <Layers className="w-4 h-4 text-blue-600" />
+                <span className="hidden sm:inline">Exploded View:</span>
+                <span className="sm:hidden">Explode:</span>
+                <span className="font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded text-[11px] border border-blue-200">
+                  {explosionFactor.toFixed(1)}x
+                </span>
+              </div>
+
+              <input
+                type="range"
+                min="0"
+                max="2.0"
+                step="0.1"
+                value={explosionFactor}
+                onChange={(e) => onChangeExplosion(parseFloat(e.target.value))}
+                className="flex-1 cursor-pointer accent-blue-600"
+                title="Drag to separate stacked floors vertically"
+              />
+
+              <button
+                onClick={() => onChangeExplosion(explosionFactor > 0 ? 0 : 1.2)}
+                className="px-2 py-1 text-[10px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+              >
+                {explosionFactor > 0 ? 'Collapse' : 'Explode'}
+              </button>
             </div>
-
-            <input
-              type="range"
-              min="0"
-              max="2.0"
-              step="0.1"
-              value={explosionFactor}
-              onChange={(e) => onChangeExplosion(parseFloat(e.target.value))}
-              className="flex-1 cursor-pointer accent-blue-600"
-              title="Drag to separate stacked floors vertically"
-            />
-
-            <button
-              onClick={() => onChangeExplosion(explosionFactor > 0 ? 0 : 1.2)}
-              className="px-2 py-1 text-[10px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
-            >
-              {explosionFactor > 0 ? 'Collapse' : 'Explode'}
-            </button>
-          </div>
+          ) : (
+            <div className="flex items-center gap-2 flex-1 text-xs text-slate-600 font-medium">
+              <Compass className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <span>Viewing 2D Legacy Cadastral Parcel Footprint (CTS #1245/8)</span>
+            </div>
+          )}
 
           <div className="flex items-center gap-2">
-            {/* Toggle Underground Layer Button */}
-            <button
-              onClick={onToggleUnderground}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-sm ${
-                showUnderground
-                  ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/20'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-              }`}
-              title="Toggle Subsurface Underground Parking Layer"
-            >
-              {showUnderground ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-              <span>{showUnderground ? 'B1 Level' : 'B1 Hidden'}</span>
-            </button>
+            {/* Toggle Underground Layer Button (in 3D Mode) */}
+            {viewMode === '3D' && (
+              <button
+                onClick={onToggleUnderground}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-sm ${
+                  showUnderground
+                    ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/20'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                }`}
+                title="Toggle Subsurface Underground Parking Layer"
+              >
+                {showUnderground ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                <span>{showUnderground ? 'B1 Level' : 'B1 Hidden'}</span>
+              </button>
+            )}
 
-            {/* AI Topology Check Button (Requirement 2) */}
+            {/* AI Topology Check Button */}
             <button
               onClick={onRunTopologyCheck}
               disabled={isValidatingTopology}

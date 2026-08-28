@@ -5,6 +5,7 @@ import SidebarPanel from './components/SidebarPanel';
 import ControlsDock from './components/ControlsDock';
 import ContractSpecsModal from './components/ContractSpecsModal';
 import TopologyResultModal from './components/TopologyResultModal';
+import DroneScanOverlay from './components/DroneScanOverlay';
 import {
   fetchBuildingData,
   getAvailableBuildings,
@@ -21,7 +22,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Interactive 3D States
+  // Interactive 3D & 2D States
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [showUnderground, setShowUnderground] = useState(true);
   const [explosionFactor, setExplosionFactor] = useState(0.0);
@@ -30,6 +31,10 @@ export default function App() {
   const [cameraTrigger, setCameraTrigger] = useState(null);
   const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
+
+  // Phase 3: AI Drone Scanning & 2D/3D Mode States
+  const [viewMode, setViewMode] = useState('3D'); // '3D' vs '2D'
+  const [isDroneScanning, setIsDroneScanning] = useState(false);
 
   // AI Topology Validation States
   const [topologyResult, setTopologyResult] = useState(null);
@@ -53,7 +58,6 @@ export default function App() {
         const data = await fetchBuildingData(selectedBuildingId);
         if (isMounted && data) {
           setBuildingData(data);
-          // Clear any previous conflict highlights on building switch
           setViolatingUlpins([]);
           setTopologyResult(null);
         }
@@ -115,7 +119,6 @@ export default function App() {
         );
         setIsTopologyModalOpen(true);
       } else {
-        // Extract violating ULPINs
         const violating = [];
         result.overlap_violations?.forEach((v) => {
           if (v.unit_a) violating.push(v.unit_a);
@@ -178,7 +181,23 @@ export default function App() {
     showToast('Conflict Reset', 'Restored default cadastre visualization.', 'info');
   };
 
-  // 7. Compute Unit Counts for Quick Filters
+  // 7. Phase 3: AI Drone Mapping Simulation
+  const handleSimulateDroneScan = () => {
+    setIsDroneScanning(true);
+    showToast('🛸 Drone Survey Initiated', 'Capturing LiDAR point cloud & multi-floor segmentation...', 'info');
+  };
+
+  const handleDroneScanComplete = () => {
+    setIsDroneScanning(false);
+    setViewMode('3D');
+    showToast(
+      '✨ 3D-ULPIN Twin Minted!',
+      'AI pipeline synthesized 18 volumetric 3D-ULPIN parcels from 2D deed CTS #1245/8 (ISO 19152).',
+      'success'
+    );
+  };
+
+  // 8. Compute Unit Counts for Quick Filters
   const unitCounts = useMemo(() => {
     if (!buildingData) return { total: 0, residential: 0, commercial: 0, parking: 0, utility: 0 };
     const aboveGroundUnits = buildingData.floors?.flatMap((f) => f.units || []) || [];
@@ -197,7 +216,7 @@ export default function App() {
   return (
     <div className="h-screen w-screen flex flex-col bg-slate-100 text-slate-900 font-sans antialiased overflow-hidden">
       
-      {/* Top Navbar with Building Selector & Mock Data Indicator */}
+      {/* Top Navbar with Building Selector, 2D/3D Mode Toggle & Drone Scan Button */}
       <Navbar
         selectedBuildingId={selectedBuildingId}
         onSelectBuilding={(id) => {
@@ -207,6 +226,17 @@ export default function App() {
         availableBuildings={availableBuildings}
         onResetView={handleResetCamera}
         onOpenSpecsModal={() => setIsSpecsModalOpen(true)}
+        onSimulateDroneScan={handleSimulateDroneScan}
+        isDroneScanning={isDroneScanning}
+        viewMode={viewMode}
+        onChangeViewMode={(mode) => {
+          setViewMode(mode);
+          showToast(
+            mode === '2D' ? '2D Legacy View Active' : '3D ULPIN Twin Active',
+            mode === '2D' ? 'Viewing 2D flat cadastral lot footprint & CTS deed bounds.' : 'Viewing full 3D volumetric cadastre twin.',
+            'info'
+          );
+        }}
       />
 
       {/* Main 3D Workspace */}
@@ -214,6 +244,7 @@ export default function App() {
         
         {/* 3D WebGL Canvas & Overlay Controls */}
         <div className="flex-1 relative h-full bg-slate-50 min-h-0 min-w-0">
+          
           {/* Three.js Scene Viewport */}
           <Building3DScene
             buildingData={buildingData}
@@ -225,9 +256,17 @@ export default function App() {
             searchQuery={searchQuery}
             cameraTrigger={cameraTrigger}
             violatingUlpins={violatingUlpins}
+            viewMode={viewMode}
+            isDroneScanning={isDroneScanning}
           />
 
-          {/* Floating Controls Dock (Search, Filters, Explode Slider, Camera, Underground Toggle, AI Topology Check) */}
+          {/* AI Drone LiDAR Photogrammetry Scan Overlay (Brain Phase 3 Req) */}
+          <DroneScanOverlay
+            isScanning={isDroneScanning}
+            onComplete={handleDroneScanComplete}
+          />
+
+          {/* Floating Controls Dock */}
           <ControlsDock
             showUnderground={showUnderground}
             onToggleUnderground={() => {
@@ -250,6 +289,10 @@ export default function App() {
             isValidatingTopology={isValidatingTopology}
             violatingUlpins={violatingUlpins}
             onOpenTopologyModal={() => setIsTopologyModalOpen(true)}
+            viewMode={viewMode}
+            onChangeViewMode={setViewMode}
+            onSimulateDroneScan={handleSimulateDroneScan}
+            isDroneScanning={isDroneScanning}
           />
         </div>
 
@@ -259,6 +302,7 @@ export default function App() {
           onClose={() => setSelectedUnit(null)}
           buildingData={buildingData}
           onFocusUnit={handleFocusUnit}
+          viewMode={viewMode}
         />
 
       </main>

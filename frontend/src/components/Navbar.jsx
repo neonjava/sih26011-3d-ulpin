@@ -9,7 +9,11 @@ import {
   RotateCcw,
   Sparkles,
   Database,
-  Code2
+  Code2,
+  Radio,
+  Layers,
+  Zap,
+  Compass
 } from 'lucide-react';
 import { USE_MOCK_DATA, API_BASE_URL } from '../services/api';
 
@@ -18,7 +22,11 @@ export default function Navbar({
   onSelectBuilding,
   availableBuildings = [],
   onResetView,
-  onOpenSpecsModal
+  onOpenSpecsModal,
+  onSimulateDroneScan,
+  isDroneScanning,
+  viewMode = '3D',
+  onChangeViewMode
 }) {
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 shadow-xs select-none">
@@ -44,7 +52,7 @@ export default function Navbar({
                 ? 'bg-amber-50 text-amber-800 border-amber-300' 
                 : 'bg-emerald-50 text-emerald-800 border-emerald-300'
             }`}
-            title={USE_MOCK_DATA ? 'Running against local mock data contract. Swap point in /frontend/src/services/api.js' : `Connected to API: ${API_BASE_URL}`}
+            title={USE_MOCK_DATA ? 'Running against local mock data contract.' : `Connected to API: ${API_BASE_URL}`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${USE_MOCK_DATA ? 'bg-amber-500 animate-pulse' : 'bg-emerald-500'}`}></span>
             <span>{USE_MOCK_DATA ? 'MOCK DATA (Toggle in api.js)' : 'LIVE API: localhost:8000'}</span>
@@ -59,11 +67,11 @@ export default function Navbar({
 
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 gap-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 gap-3">
           
           {/* Brand Logo & Title */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-sky-500 text-white shadow-md shadow-blue-500/20">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-sky-500 text-white shadow-md shadow-blue-500/20">
               <Boxes className="w-5 h-5" />
             </div>
 
@@ -73,7 +81,7 @@ export default function Navbar({
                   3D-ULPIN
                 </span>
                 <span className="px-2 py-0.2 text-[10px] font-extrabold font-mono bg-blue-50 text-blue-700 rounded border border-blue-200">
-                  Cadastre Visualizer
+                  AI Drone Cadastre
                 </span>
               </div>
               <p className="text-xs text-slate-500 font-medium hidden sm:block">
@@ -82,11 +90,56 @@ export default function Navbar({
             </div>
           </div>
 
+          {/* Center: 2D Legacy vs 3D ULPIN View Mode Toggle Pill */}
+          <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold shadow-inner">
+            <button
+              onClick={() => onChangeViewMode && onChangeViewMode('2D')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
+                viewMode === '2D'
+                  ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+              title="View 2D Legacy Cadastral Footprint"
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>2D Legacy View</span>
+            </button>
+
+            <button
+              onClick={() => onChangeViewMode && onChangeViewMode('3D')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition ${
+                viewMode === '3D'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/20'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+              title="View Full 3D Volumetric ULPIN Twin"
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>3D ULPIN View</span>
+            </button>
+          </div>
+
           {/* Center/Right Action Area */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             
+            {/* Prominent "Simulate AI Drone Mapping" Button (Brain Agent Phase 3 Req) */}
+            <button
+              onClick={onSimulateDroneScan}
+              disabled={isDroneScanning}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold text-white shadow-md transition active:scale-95 ${
+                isDroneScanning
+                  ? 'bg-slate-400 cursor-wait'
+                  : 'bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 shadow-cyan-500/25 ring-1 ring-cyan-400/40 animate-pulse'
+              }`}
+              title="Simulate AI Drone LiDAR Scanning & Multi-Floor 3D Extrusion"
+            >
+              <Radio className="w-4 h-4 animate-spin" />
+              <span className="hidden sm:inline">Simulate AI Drone Mapping</span>
+              <span className="sm:hidden">Drone Scan</span>
+            </button>
+
             {/* Building Selection Dropdown */}
-            <div className="relative">
+            <div className="relative hidden md:block">
               <select
                 value={selectedBuildingId}
                 onChange={(e) => onSelectBuilding(e.target.value)}
@@ -108,7 +161,7 @@ export default function Navbar({
               title="Reset 3D Camera to Default Orbit View"
             >
               <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
-              <span className="hidden sm:inline">Reset View</span>
+              <span className="hidden lg:inline">Reset View</span>
             </button>
 
             {/* Specs / Info Modal Button */}
@@ -119,7 +172,7 @@ export default function Navbar({
                 title="View JSON Contract & API Swap Guide"
               >
                 <Code2 className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">API Contract</span>
+                <span className="hidden lg:inline">API Contract</span>
               </button>
             )}
 
