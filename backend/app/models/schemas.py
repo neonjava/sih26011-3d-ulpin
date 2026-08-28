@@ -46,8 +46,13 @@ class BuildingResponse(BaseModel):
     geometry: dict
     ground_elevation: float
 
+class TopologyViolation(BaseModel):
+    ulpin1: str
+    ulpin2: Optional[str] = None
+    reason: str
+    overlap_volume: float = 0.0
+
 class TopologyCheckResult(BaseModel):
     valid: bool
-    z_violations: list = []
-    overlap_violations: list = []
-    summary: str = ''
+    summary: str
+    violations: List[TopologyViolation] = []

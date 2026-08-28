@@ -2,31 +2,64 @@
 Topology validation module for 3D ULPIN.
 Uses Shapely for 2D geometry checks and basic range checks for Z axis.
 """
+import math
 from typing import Any, Dict, List, Optional, Tuple, Union
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, MultiPolygon
 from shapely.geometry.base import BaseGeometry
+from shapely import validation
 
-def _to_polygon(geom_data: Union[BaseGeometry, List[Tuple[float, float]], List[List[float]]]) -> Polygon:
-    """Helper to convert coordinates list or Shapely geometry to a Shapely Polygon."""
+def _to_polygon(geom_data: Union[BaseGeometry, Dict[str, Any], List[Tuple[float, float]], List[List[float]]]) -> Polygon:
+    """Helper to convert coordinates list, GeoJSON dict, or Shapely geometry to a Shapely Polygon."""
     if isinstance(geom_data, BaseGeometry):
+        if isinstance(geom_data, MultiPolygon):
+            return max(geom_data.geoms, key=lambda p: p.area)
         if not isinstance(geom_data, Polygon):
             raise ValueError(f"Expected Polygon, got {type(geom_data)}")
         return geom_data
-    return Polygon(geom_data)
+    if isinstance(geom_data, dict):
+        coords = geom_data.get("coordinates", [[]])
+        if coords and len(coords) > 0:
+            poly = Polygon(coords[0])
+        else:
+            poly = Polygon([])
+    else:
+        poly = Polygon(geom_data)
+        
+    if not poly.is_valid:
+        poly = validation.make_valid(poly)
+        if isinstance(poly, MultiPolygon):
+            poly = max(poly.geoms, key=lambda p: p.area)
+    return poly
+
+def _compute_area_sqm(poly: BaseGeometry) -> float:
+    """Computes area in square meters, converting from degrees if geographic coordinates."""
+    if poly.is_empty or not hasattr(poly, 'area'):
+        return 0.0
+    raw_area = float(poly.area)
+    if raw_area <= 0:
+        return 0.0
+    # Check if coordinates are geographic (WGS84 degrees)
+    centroid = poly.centroid
+    if abs(centroid.x) <= 180 and abs(centroid.y) <= 90 and raw_area < 1.0:
+        lat = centroid.y
+        m_per_deg_lat = 111320.0
+        m_per_deg_lon = 111320.0 * math.cos(math.radians(lat))
+        return raw_area * m_per_deg_lat * m_per_deg_lon
+    return raw_area
 
 def check_units_overlap(
-    unit_a_geom: Union[BaseGeometry, List[Any]], 
+    unit_a_geom: Union[BaseGeometry, Dict[str, Any], List[Any]], 
     unit_a_z_range: Tuple[float, float], 
-    unit_b_geom: Union[BaseGeometry, List[Any]], 
+    unit_b_geom: Union[BaseGeometry, Dict[str, Any], List[Any]], 
     unit_b_z_range: Tuple[float, float]
 ) -> Dict[str, Any]:
     """
     Checks if two units overlap in 2D and 3D.
     
     Args:
-        unit_a_geom: Geometry of unit A (Polygon or list of coordinates)
+        unit_a_geom: Geometry of unit A (Polygon, GeoJSON dict, or list of coordinates)
         unit_a_z_range: (z_min, z_max) for unit A
-        unit_b_geom: Geometry of unit B (Polygon or list of coordinates)
+        unit_b_geom: Geometry of unit B (Polygon, GeoJSON dict, or list of coordinates)
         unit_b_z_range: (z_min, z_max) for unit B
         
     Returns:
@@ -38,8 +71,12 @@ def check_units_overlap(
     
     # 2D Intersection
     intersection_2d = poly_a.intersection(poly_b)
-    overlap_area_2d = intersection_2d.area
-    overlaps_2d = overlap_area_2d > 1e-6  # small tolerance for floating point issues
+    
+    # Calculate area in sq meters
+    overlap_area_sqm = _compute_area_sqm(intersection_2d)
+    
+    # Meaningful 2D overlap (more than 0.01 sqm = 100 sq cm)
+    overlaps_2d = overlap_area_sqm > 0.01
     
     # Z Intersection
     a_min, a_max = unit_a_z_range
@@ -49,17 +86,17 @@ def check_units_overlap(
     overlap_z_max = min(a_max, b_max)
     overlap_z_range = overlap_z_max - overlap_z_min
     
-    overlaps_z = overlap_z_range > 1e-6
+    overlaps_z = overlap_z_range > 1e-4
     
     # 3D Intersection
     overlaps_3d = overlaps_2d and overlaps_z
-    overlap_volume = overlap_area_2d * overlap_z_range if overlaps_3d else 0.0
+    overlap_volume = overlap_area_sqm * overlap_z_range if overlaps_3d else 0.0
     
     return {
         'overlaps_2d': overlaps_2d,
         'overlaps_z': overlaps_z,
         'overlaps_3d': overlaps_3d,
-        'overlap_area_2d': float(overlap_area_2d),
+        'overlap_area_2d': float(overlap_area_sqm),
         'overlap_z_range': float(overlap_z_range) if overlaps_z else 0.0,
         'overlap_volume': float(overlap_volume)
     }
@@ -96,9 +133,9 @@ def check_unit_within_building(
     error = None
     if not within:
         if unit_z_min < building_z_min - tol:
-            error = f"Unit bottom ({unit_z_min}) is below building minimum ({building_z_min})"
+            error = f"Unit bottom ({unit_z_min}m) is below building foundation minimum ({building_z_min}m)"
         elif unit_z_max > building_z_max + tol:
-            error = f"Unit top ({unit_z_max}) is above building maximum ({building_z_max})"
+            error = f"Unit top ({unit_z_max}m) exceeds sanctioned building maximum height ({building_z_max}m)"
             
     return {
         'within_building': within,
@@ -117,7 +154,7 @@ def validate_floor_units(units: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         units: List of unit dicts. Each must contain 'geometry', 'z_min', 'z_max', and 'ulpin'
         
     Returns:
-        List of overlap violations between pairs of units.
+        List of overlap violations matching { 'ulpin1', 'ulpin2', 'reason', 'overlap_volume' }.
     """
     violations = []
     
@@ -135,11 +172,12 @@ def validate_floor_units(units: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             )
             
             if overlap_res['overlaps_3d']:
+                vol = round(float(overlap_res['overlap_volume']), 2)
                 violations.append({
-                    'unit_a': u_a.get('ulpin', f"index_{i}"),
-                    'unit_b': u_b.get('ulpin', f"index_{j}"),
-                    'overlap_area': overlap_res['overlap_area_2d'],
-                    'overlap_volume': overlap_res['overlap_volume']
+                    'ulpin1': u_a.get('ulpin', f"unit_{i}"),
+                    'ulpin2': u_b.get('ulpin', f"unit_{j}"),
+                    'reason': f"3D spatial collision detected between units ({vol:.2f} m³ volumetric overlap)",
+                    'overlap_volume': vol
                 })
                 
     return violations
@@ -153,9 +191,9 @@ def validate_building_topology(building: Dict[str, Any], units: List[Dict[str, A
         units: List of unit dicts with 'geometry', 'z_min', 'z_max', 'ulpin', 'floor_id'
         
     Returns:
-        Dict with overall validation result and lists of specific violations.
+        Dict matching { 'valid': bool, 'summary': str, 'violations': [...] }
     """
-    z_violations = []
+    violations = []
     
     # 1. Check unit Z boundaries vs building envelope
     ground_elev = building.get('ground_elevation', 0.0)
@@ -173,15 +211,14 @@ def validate_building_topology(building: Dict[str, Any], units: List[Dict[str, A
             basement_depth=basement_depth
         )
         if not z_res['within_building']:
-            z_violations.append({
-                'unit': u.get('ulpin', 'unknown'),
-                'error': z_res['error']
+            violations.append({
+                'ulpin1': u.get('ulpin', 'unknown'),
+                'ulpin2': None,
+                'reason': z_res.get('error', 'Unit Z-range exceeds sanctioned building envelope bounds'),
+                'overlap_volume': 0.0
             })
             
     # 2. Check for overlaps on same floors
-    overlap_violations = []
-    
-    # Group units by floor
     floors = {}
     for u in units:
         f_id = u.get('floor_id', 'unknown')
@@ -193,19 +230,17 @@ def validate_building_topology(building: Dict[str, Any], units: List[Dict[str, A
         if len(floor_units) > 1:
             floor_violations = validate_floor_units(floor_units)
             if floor_violations:
-                overlap_violations.extend(floor_violations)
+                violations.extend(floor_violations)
                 
-    is_valid = len(z_violations) == 0 and len(overlap_violations) == 0
+    is_valid = len(violations) == 0
     
-    summary_parts = []
-    if z_violations:
-        summary_parts.append(f"{len(z_violations)} units outside building envelope.")
-    if overlap_violations:
-        summary_parts.append(f"{len(overlap_violations)} overlapping unit pairs found.")
+    if is_valid:
+        summary = "All units topologically valid. No 3D spatial overlaps or envelope violations detected."
+    else:
+        summary = f"Topology validation detected {len(violations)} spatial violation(s)."
     
     return {
         'valid': is_valid,
-        'z_violations': z_violations,
-        'overlap_violations': overlap_violations,
-        'summary': " ".join(summary_parts) if summary_parts else "All units topologically valid."
+        'summary': summary,
+        'violations': violations
     }
