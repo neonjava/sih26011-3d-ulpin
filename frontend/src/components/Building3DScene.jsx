@@ -11,6 +11,13 @@ export const UNIT_COLORS = {
     edge: 0x38bdf8,
     label: 'Residential'
   },
+  commercial: {
+    base: 0x059669,     // Emerald Green
+    emissive: 0x047857,
+    glow: '#059669',
+    edge: 0x34d399,
+    label: 'Commercial'
+  },
   parking: {
     base: 0xd97706,     // Warm Amber / Gold
     emissive: 0xb45309,
@@ -579,6 +586,8 @@ export default function Building3DScene({
               className={`text-[10px] px-2 py-0.5 rounded font-bold uppercase ${
                 hoveredUnitData.type === 'residential'
                   ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                  : hoveredUnitData.type === 'commercial'
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                   : hoveredUnitData.type === 'parking'
                   ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                   : 'bg-purple-500/20 text-purple-300 border border-purple-500/40'

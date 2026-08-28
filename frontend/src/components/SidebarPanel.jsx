@@ -44,6 +44,13 @@ export default function SidebarPanel({
         name: 'Residential Unit'
       };
     }
+    if (t === 'commercial') {
+      return {
+        bg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        icon: <Building2 className="w-3.5 h-3.5" />,
+        name: 'Commercial Unit'
+      };
+    }
     if (t === 'parking') {
       return {
         bg: 'bg-amber-50 text-amber-700 border-amber-200',
