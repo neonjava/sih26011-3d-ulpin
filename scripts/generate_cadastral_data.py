@@ -24,8 +24,9 @@ Target Datasets:
 
 import json
 import os
+from pathlib import Path
 
-DATA_DIR = "PROJECT_ROOT/sih26011-3d-ulpin/backend/app/data"
+DATA_DIR = str(Path(__file__).resolve().parents[1] / "backend/app/data")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 

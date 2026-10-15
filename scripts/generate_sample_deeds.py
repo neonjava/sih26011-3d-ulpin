@@ -19,6 +19,7 @@ Generated Deeds:
 
 import os
 import sys
+from pathlib import Path
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.units import mm, inch, cm
@@ -31,11 +32,8 @@ from reportlab.platypus import (
 from reportlab.graphics.shapes import Drawing, Rect, String, Line, Group, Circle
 from reportlab.graphics.barcode import qr, code128
 
-OUTPUT_DIRS = [
-    "PROJECT_ROOT/sih26011-3d-ulpin/backend/app/data",
-    "PROJECT_ROOT/sih26011-3d-ulpin/backend/app/data/deeds",
-    "PROJECT_ROOT/sih26011-3d-ulpin/scripts"
-]
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIRS = [ROOT / 'backend/app/data', ROOT / 'backend/app/data/deeds', ROOT / 'scripts']
 
 for d in OUTPUT_DIRS:
     os.makedirs(d, exist_ok=True)
